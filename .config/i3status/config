@@ -1,0 +1,91 @@
+general {
+        output_format = "i3bar"
+        colors = false
+        markup = pango
+        interval = 5
+        color_good = '#2f343f'
+        color_degraded = '#ba5e57'
+        color_bad = '#ba5e57'
+        color_separator = '#ba5e57'
+        separator = '<'
+}
+
+order += "load"
+order += "cpu_temperature 0"
+#order += "disk /"
+#order += "disk /home"
+#order += "ethernet enp4s0f1"
+#order += "wireless wlx00e02dac05fa"
+order += "volume master"
+order += "battery 0"
+order += "tztime date"
+order += "tztime hour"
+
+load {
+        format = "<span background='#88c0d0'> Load: %5min Load </span>"
+        #separator_block_width = 5
+}
+
+cpu_temperature 0 {
+        format = "<span background='#8fbcbb'> Temp: %degrees°C </span>"
+        path = "/sys/class/thermal/thermal_zone0/temp"
+        #separator_block_width = 5
+}
+
+disk "/" {
+        format = "<span background='#fec7cd'> Disk: %free Free </span>"
+        #separator_block_width = 0
+}
+
+disk "/home" {
+        format = "<span background='#a1d569'> Disk: %free Free </span>"
+        #separator_block_width = 0
+}
+
+ethernet enp4s0f1 {
+        format_up = "<span background='#88c0d0'> Eth: %ip </span>"
+        format_down = "<span background='#88c0d0'> Disconnected </span>"
+        #separator_block_width = 0
+}
+
+wireless wlx00e02dac05fa {
+        format_up = "<span background='#619bff'> WiFi: %essid </span>"
+        format_down = "<span background='#619bff'> WiFi: Disconnected </span>"
+        #separator_block_width = 0
+}
+
+volume master {
+        format = "<span background='#88c0d0'> VOL: %volume </span>"
+        format_muted = "<span background='#88c0d0'> Muted </span>"
+        device = "default"
+        mixer = "Master"
+        mixer_idx = 0
+        #separator_block_width = 0
+}
+
+battery 0 {
+	last_full_capacity = true
+        format = "<span background='#8fbcbb'> %status%percentage </span>"
+        format_down = "No Battery"
+        status_chr = "CHARGING: "
+        status_bat = "BAT: "
+        status_unk = "UNK: "
+        status_full = "FULL:"
+        path = "/sys/class/power_supply/BAT%d/uevent"
+        low_threshold = 10
+        #separator_block_width = 0
+}
+
+tztime date {
+	format = "<span background='#81a1c1'> %time </span>"
+	format_time = "%a %-d %b"
+        #separator_block_width = 0
+}
+
+tztime hour {
+	format = "<span background='#8fbcbb'> %time </span>"
+	format_time = "%I:%M %p"
+        #separator_block_width = 0
+}
+
+#88c0d0 main color

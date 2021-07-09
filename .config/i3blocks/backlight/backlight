@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+STEP_SIZE=${STEP_SIZE:-5}
+
+XBACKLIGHT_SET="$HOME/Scripts/brightness.sh"
+
+case $BLOCK_BUTTON in
+  3) xset dpms force off ;; # right click
+  4) $XBACKLIGHT_SET -inc ;; # scroll up
+  5) $XBACKLIGHT_SET -dec ;; # scroll down, decrease
+esac
+
+BRIGHTNESS=$("$HOME"/Scripts/brightness.sh -get)
+echo "${BRIGHTNESS}%"

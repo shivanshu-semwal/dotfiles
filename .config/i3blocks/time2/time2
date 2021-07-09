@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+TIME=$(date +" %A %e.%B   %I:%M:%S")
+# TIME=$(date +"%H:%M:%S")
+echo "${TIME}"

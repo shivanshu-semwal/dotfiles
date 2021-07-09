@@ -1,0 +1,41 @@
+music_directory "/media/antihero/Data/Songs"
+playlist_directory "/media/antihero/Data/Songs"
+db_file	"/home/antihero/.config/mpd/mpd.db"
+log_file "/home/antihero/.config/mpd/mpd.log"
+pid_file "/home/antihero/.config/mpd/mpd.pid"
+state_file "/home/antihero/.config/mpd/state"
+sticker_file "/home/antihero/.config/mpd/sticker.sql"
+
+bind_to_address	"localhost"
+
+input {
+        plugin "curl"
+#       proxy "proxy.isp.com:8080"
+#       proxy_user "user"
+#       proxy_password "password"
+}
+
+input {
+        enabled      "no"
+        plugin       "tidal"
+#       token        "TOKEN"
+#       username     "USERNAME"
+#       password     "PASSWORD"
+#       audioquality "Q"
+}
+
+decoder {
+        plugin                  "hybrid_dsd"
+        enabled                 "no"
+#       gapless                 "no"
+}
+
+audio_output {
+        type            "pulse"
+        name            "My Pulse Output"
+        mixer_type      "software"
+#       server          "remote_server"		# optional
+#       sink            "remote_server_sink"	# optional
+}
+
+filesystem_charset      "UTF-8"

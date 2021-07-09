@@ -1,0 +1,21 @@
+music_directory "/media/antihero/Data/Songs/"
+playlist_directory "/media/antihero/Data/Songs/"
+db_file "/home/antihero/.mpd/mpd.db"
+log_file "/home/antihero/.mpd/mpd.log"
+pid_file "/home/antihero/.mpd/mpd.pid"
+state_file "/home/antihero/.mpd/mpdstate"
+
+audio_output {
+type "pulse"
+name "pulse audio"
+}
+
+audio_output {
+type "fifo"
+name "my_fifo"
+path "/tmp/mpd.fifo"
+format "44100:16:2"
+}
+
+bind_to_address "127.0.0.1"
+port "6600"

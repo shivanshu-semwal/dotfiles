@@ -1,0 +1,49 @@
+# i3blocks configuration file
+#     https://vivien.github.io/i3blocks
+
+
+# Global properties
+separator=true
+command=~/.config/i3blocks/$BLOCK_NAME/$BLOCK_NAME
+separator_block_width=15
+markup=none
+
+# tldr
+# [block name]
+# command=command you want to run
+# interval=?
+# color=your_color
+
+#LABEL=♪ 
+[volume]
+LABEL=m
+interval=once
+signal=10
+#STEP=5%
+#MIXER=[determined automatically]
+#SCONTROL=[determined automatically]
+#NATURAL_MAPPING=0
+
+[wifi]
+label=
+INTERFACE=wlp0s20f3
+interval=60
+#COLOR_GE80=#00FF00
+#COLOR_GE60=#FFF600
+#COLOR_GE40=#FFAE00
+#COLOR_LOWR=#FF0000
+#COLOR_DOWN=#FF0000
+
+[battery2]
+markup=pango
+interval=30
+
+[time2]
+label=
+interval=1
+
+[backlight]
+label=☀
+interval=20
+#STEP_SIZE=5
+#USE_SUDO=0
