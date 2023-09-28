@@ -69,7 +69,8 @@ set viminfo+=n~/.vim/viminfo
 " PLUGINS BEGIN
 call plug#begin('~/.vim/plugged')
 
-Plug 'joshdick/onedark.vim'
+" Plug 'joshdick/onedark.vim'
+Plug 'morhetz/gruvbox'
 Plug 'vim-airline/vim-airline'
 Plug 'ryanoasis/vim-devicons'
 Plug 'sheerun/vim-polyglot'
@@ -82,28 +83,32 @@ call plug#end()
 " PLUGINS SETTINGS
 "
 " airline plugin
-let g:airline_theme='onedark'
+let g:airline_theme='gruvbox'
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 
-let g:onedark_terminal_italics = 1
+" let g:onedark_terminal_italics = 1
 " colorscheme
-if (has("autocmd") && !has("gui_running"))
-  augroup colorset
-    autocmd!
-    let s:white = { "gui": "#ABB2BF", "cterm": "145", "cterm16" : "7" }
-    autocmd ColorScheme * call onedark#set_highlight("Normal", { "fg": s:white }) " `bg` will not be styled since there is no `bg` setting
-  augroup END
-endif
-if (has("autocmd") && has("gui_running"))
-  augroup colorset
-    autocmd!
-    let s:white = { "gui": "#ABB2BF", "cterm": "145", "cterm16" : "7" }
-    let s:background = { "gui": "#1e2127", "cterm": "235", "cterm16": "NONE" }
-    autocmd ColorScheme * call onedark#set_highlight("Normal", { "fg": s:white, "bg": s:background }) " `bg` will not be styled since there is no `bg` setting
-  augroup END
-endif
-colorscheme onedark
+" if (has("autocmd") && !has("gui_running"))
+"   augroup colorset
+"     autocmd!
+"     let s:white = { "gui": "#ABB2BF", "cterm": "145", "cterm16" : "7" }
+"     autocmd ColorScheme * call onedark#set_highlight("Normal", { "fg": s:white }) " `bg` will not be styled since there is no `bg` setting
+"   augroup END
+" endif
+" if (has("autocmd") && has("gui_running"))
+"   augroup colorset
+"     autocmd!
+"     let s:white = { "gui": "#ABB2BF", "cterm": "145", "cterm16" : "7" }
+"     let s:background = { "gui": "#1e2127", "cterm": "235", "cterm16": "NONE" }
+"     autocmd ColorScheme * call onedark#set_highlight("Normal", { "fg": s:white, "bg": s:background }) " `bg` will not be styled since there is no `bg` setting
+"   augroup END
+" endif
+
+set bg=dark
+let g:gruvbox_contrast_dark = 'hard'
+colorscheme gruvbox 
+
 if exists('+termguicolors')
   let &t_8f="\<Esc>[38;2;%lu;%lu;%lum"
   let &t_8b="\<Esc>[48;2;%lu;%lu;%lum"
