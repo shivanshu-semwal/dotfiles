@@ -1,0 +1,287 @@
+#!/usr/bin/env bash
+
+# Screenshot directory
+VIDEO_DIR="$HOME/Videos"
+AUDIO_DIR="$HOME/Music/record"
+
+# set ffmpeg defaults
+ffmpeg() {
+    command ffmpeg -hide_banner -loglevel error -nostdin "$@"
+}
+
+video_to_gif() {
+    ffmpeg -i "$1" -vf palettegen -f image2 -c:v png - |
+        ffmpeg -i "$1" -i - -filter_complex paletteuse "$2"
+}
+
+countdown() {
+    for ((i = 3; i > 0; i--)); do
+        notify-send "Screenshot" "Recording in $i seconds" -t 1000 -i record
+        sleep 1
+    done
+}
+
+record_region_gif() {
+    notify-send "Screenshot" "Select a region to record"
+    dt=$(date '+%d-%m-%Y %H:%M:%S')
+
+    ffcast -q "$(slop -n -f '-g %g ' && countdown)" rec /tmp/screenshot_gif.mp4
+
+    notify-send "Screenshot" "Converting to gif... (this can take a while)"
+    video_to_gif /tmp/screenshot_gif.mp4 "$VIDEO_DIR/$dt.gif"
+    rm /tmp/screenshot_gif.mp4
+    notify-send "Screenshot" "Recording saved to $VIDEO_DIR"
+}
+
+record_screen_gif() {
+    countdown
+    dt=$(date '+%d-%m-%Y %H:%M:%S')
+
+    ffcast -q rec /tmp/screenshot_gif.mp4
+
+    notify-send "Screenshot" "Converting to gif... (this can take a while)"
+    video_to_gif /tmp/screenshot_gif.mp4 "$VIDEO_DIR/$dt.gif"
+    rm /tmp/screenshot_gif.mp4
+    notify-send "Screenshot" "Recording saved to $VIDEO_DIR"
+}
+
+record_region_mp4() {
+    notify-send "Screenshot" "Select a region to record"
+    dt=$(date '+%d-%m-%Y %H:%M:%S')
+
+    ffcast -q "$(slop -n -f '-g %g ' && countdown)" rec "$VIDEO_DIR/$dt.mp4"
+
+    notify-send "Screenshot" "Recording saved to $VIDEO_DIR"
+}
+
+record_screen_mp4() {
+    countdown
+    dt=$(date '+%d-%m-%Y %H:%M:%S')
+
+    ffcast -q rec "$VIDEO_DIR/$dt.mp4"
+
+    notify-send "Screenshot" "Recording saved to $VIDEO_DIR"
+}
+
+record_region_mp4_audio_virtual() {
+    notify-send "Screenshot" "Select a region to record"
+    dt=$(date '+%d-%m-%Y %H:%M:%S')
+
+    ffcast -q "$(slop -n -f '-g %g ' && countdown)" ffmpeg \
+        -hide_banner \
+        -loglevel error \
+        -f x11grab -show_region 1 -framerate 30 -video_size %wx%h -i :0.0+%x,%y \
+        -f pulse -i alsa_output.pci-0000_00_1f.3.analog-stereo.monitor -ac 1 "$VIDEO_DIR/$dt.mp4"
+
+    notify-send "Screenshot" "Recording saved to $VIDEO_DIR"
+}
+
+record_region_mp4_audio_microphone() {
+    notify-send "Screenshot" "Select a region to record"
+    dt=$(date '+%d-%m-%Y %H:%M:%S')
+
+    ffcast -q "$(slop -n -f '-g %g ' && countdown)" ffmpeg \
+        -hide_banner \
+        -loglevel error \
+        -f x11grab -show_region 1 -framerate 30 -video_size %wx%h -i :0.0+%x,%y \
+        -f pulse -i alsa_input.pci-0000_00_1f.3.analog-stereo -ac 1 "$VIDEO_DIR/$dt.mp4"
+
+    notify-send "Screenshot" "Recording saved to $VIDEO_DIR"
+}
+
+record_audio_virtual_mp3() {
+    notify-send "Screenshot" "Starting audio recording." -i sound-recorder
+    dt=$(date '+%d-%m-%Y %H:%M:%S')
+
+    'ffmpeg' \
+        -loglevel error \
+        -f pulse -i alsa_output.pci-0000_00_1f.3.analog-stereo.monitor -ac 1 "$AUDIO_DIR/$dt.mp3"
+
+    notify-send "Screenshot" "Audio saved to $AUDIO_DIR" -i sound-recorder
+}
+
+record_audio_microphone_mp3() {
+    notify-send "Screenshot" "Starting audio recording." -i sound-recorder
+    dt=$(date '+%d-%m-%Y %H:%M:%S')
+
+    'ffmpeg' \
+        -loglevel error \
+        -f pulse -i alsa_input.pci-0000_00_1f.3.analog-stereo -ac 1 "$AUDIO_DIR/$dt.mp3"
+
+    notify-send "Screenshot" "Audio saved to $AUDIO_DIR" -i sound-recorder
+}
+
+check_deps() {
+    if ! hash "$1" 2>/dev/null; then
+        echo "Error: This script requires $1"
+        exit 1
+    fi
+}
+
+usage() {
+    echo -e "USAGE: frecord [OPTION]"
+    echo -e "-s, --stop"
+    echo -e "\tstop recording"
+    echo -e "-h, --help"
+    echo -e "\tshow help"
+    echo -e "-v, --video"
+    echo -e "\tVideo to record. region, screen are valid option."
+    echo -e "-vf, --vformat"
+    echo -e "\tVideo format. gif, mp4 are valid option."
+    echo -e "-a, --audio"
+    echo -e "\tAudio to record. mic, virtual are valid option."
+    exit 1
+}
+
+main() {
+    # check dependencies
+    check_deps slop
+    check_deps ffcast
+    check_deps ffmpeg
+    check_deps xclip
+    check_deps rofi
+
+    VIDEO=""
+    AUDIO=""
+    VFORMAT="mp4"
+    AFORMAT="mp3"
+
+    while [ "$1" != "" ]; do
+        PARAM="$1"
+        case $PARAM in
+        -h | --help)
+            usage
+            exit
+            ;;
+        -s | --stop)
+            pkill -fxn '(/\S+)*ffmpeg\s.*\sx11grab\s.*'
+            pkill -fxn '(/\S+)*ffmpeg\s.*\spulse\s.*'
+            exit 1
+            ;;
+        -v | --video)
+            # capture [region|screen]
+            shift
+            VIDEO="$1"
+            ;;
+        -vf | --vformat)
+            # format [gif|mp4]
+            shift
+            VFORMAT="$1"
+            ;;
+        -a | --audio)
+            # capture [microphone|virtual]
+            shift
+            AUDIO="$1"
+            ;;
+        -af | --aformat)
+            # format [mp3|]
+            shift
+            AFORMAT="$1"
+            ;;
+        *)
+            echo "ERROR: unknown parameter \"$PARAM\""
+            usage
+            ;;
+        esac
+        shift
+    done
+
+    [ -z "$VIDEO" ] && [ -z "$AUDIO" ] && exit 1
+
+    if [ -z "$VIDEO" ]; then
+        case "$AUDIO" in
+        "virtual")
+            record_audio_virtual_mp3
+            ;;
+        "mic")
+            record_audio_microphone_mp3
+            ;;
+        *)
+            exit 1
+            ;;
+        esac
+    fi
+
+    case "$VIDEO" in
+    "region")
+        case "$AUDIO" in
+        "virtual")
+            case "$VFORMAT" in
+            "mp4") 
+                record_region_mp4_audio_virtual
+            ;;
+            *)
+                exit 1
+                ;;
+            esac
+            ;;
+        "mic")
+            case "$VFORMAT" in
+            "mp4") 
+                record_region_mp4_audio_microphone
+                ;;
+            *)
+                exit 1
+                ;;
+            esac
+            ;;
+        *)
+            case "$VFORMAT" in
+            "gif")
+                record_region_gif
+                ;;
+            "mp4")
+                record_region_mp4
+                ;;
+            *)
+                exit 1
+                ;;
+            esac
+            ;;
+        esac
+        ;;
+    "screen")
+        case "$AUDIO" in
+        "virtual")
+            case "$VFORMAT" in
+            "mp4")
+                ;;
+            *)
+                exit 1
+                ;;
+            esac
+            ;;
+        "mic")
+            case "$VFORMAT" in
+            "mp4")
+                ;;
+            *)
+                exit 1
+                ;;
+            esac
+            ;;
+        *)
+            case "$VFORMAT" in
+            "gif")
+                record_screen_gif
+                ;;
+            "mp4")
+                record_screen_mp4
+                ;;
+            *)
+                exit 1
+                ;;
+            esac
+            ;;
+        esac
+        ;;
+    *)
+        exit 1
+        ;;
+    esac
+}
+
+# running the program
+set -e
+main "$@" &
+exit 0

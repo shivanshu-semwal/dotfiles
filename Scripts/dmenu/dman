@@ -1,0 +1,19 @@
+#!/bin/bash
+[ -f "$HOME/.dmenurc" ] && . $HOME/.dmenurc || DMENU='dmenu -i'
+DMTERM="alacritty -e"
+declare -a options=("Search manpages" "Random manpage")
+choice=$(printf '%s\n' "${options[@]}" | eval "$DMENU -p 'Manpages:'")
+case "$choice" in
+'Search manpages')
+	man -k . | awk '{$3="-"; print $0}' |
+		eval "$DMENU -p 'Search for:'" |
+		awk '{print $2, $1}' | tr -d '()' | xargs $DMTERM man
+	;;
+'Random manpage')
+	man -k . | awk '{print $1}' | shuf -n 1 |
+		eval "$DMENU -p 'Random manpage:'" | xargs $DMTERM man
+	;;
+*)
+	exit 1
+	;;
+esac

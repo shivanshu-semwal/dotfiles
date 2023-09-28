@@ -1,0 +1,45 @@
+#!/bin/bash
+[ -f "$HOME/.dmenurc" ] && . $HOME/.dmenurc || DMENU='dmenu -i'
+# Defining the text editor to use.
+DMEDITOR="subl"
+# function to check if an element is inside an array
+containsElement() {
+  local e match="$1"
+  shift
+  for e; do [[ "$e" == "$match" ]] && return 0; done
+  return 1
+}
+# An array of options to choose.
+# You can edit this list to add/remove config files.
+declare -a options=(
+  "alacritty - $HOME/.config/alacritty/"
+  "bash - $HOME/.bashrc"
+  "bspwm - $HOME/.config/bspwm"
+  "cava - $HOME/.config/cava/config"
+  "compton - $HOME/.config/compton.conf"
+  "code - $HOME/.config/Code/User"
+  "dunst - $HOME/.config/dunst"
+  "i3 - $HOME/.config/i3/config"
+  "neovim - $HOME/.config/nvim"
+  "openbox - $HOME/.config/openbox"
+  "palette - $HOME/Scripts/dmenu/src/palette"
+  "picom - $HOME/.config/picom/picom.conf"
+  "polybar - $HOME/.config/polybar"
+  "qtile - $HOME/.config/qtile"
+  "gestures - $HOME/.config/libinput-gestures.conf"
+  "rofi - $HOME/.config/rofi"
+  "starship - $HOME/.config/starship.toml"
+  "vim - $HOME/.vim"
+  "xava - $HOME/.config/xava/config"
+  "xresources - $HOME/.Xresources"
+  "zathura - $HOME/.config/zathura"
+  "zsh - $HOME/.zshrc"
+)
+choice=$(printf '%s\n' "${options[@]}" | eval "$DMENU -p '  '")
+containsElement "$choice" "${options[@]}"
+res=$?
+[ $res == 1 ] && exit
+if [ "$choice" ]; then
+  cfg=$(printf '%s\n' "${choice}" | awk '{print $NF}')
+  $DMEDITOR "$cfg"
+fi

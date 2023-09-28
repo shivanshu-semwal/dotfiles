@@ -1,0 +1,52 @@
+#!/bin/bash
+
+# Change to the directory of pdf file
+cd $(dirname "$1")
+pdf=$(basename "$1")
+pdf_data="${pdf%.*}""_data.txt"
+EXTRACT_FILE=booky_bookmarks_extract 
+bkFile="$2"
+
+
+if [[ "$OSTYPE" == "darwin"* ]]; then
+    SED=gsed
+else
+    SED=sed
+fi
+
+echo "Converting $bkFile to pdftk compatible format"
+python3 -c '
+import sys
+
+level = 0
+startChar = "{"
+endChar = "}"
+for line in sys.stdin:
+	line = line.strip()
+	if line == startChar:
+		level = level + 1
+	elif line == endChar:
+		level = level - 1
+	elif line:
+		commaIndex = line.rfind(",")
+		title = line[:commaIndex]
+		pageNo = line[commaIndex + 1:].strip()
+		print("BookmarkBegin")
+		print("BookmarkTitle:", title.strip())
+		print("BookmarkLevel:", level)
+		print("BookmarkPageNumber:", pageNo.strip())' < "$bkFile" > "$EXTRACT_FILE"
+
+echo "Dumping pdf meta data..."
+pdftk "$pdf" dump_data_utf8 output "$pdf_data"
+
+echo "Clear dumped data of any previous bookmarks"
+$SED -i '/Bookmark/d' "$pdf_data"
+
+echo "Inserting your bookmarks in the data"
+$SED -i "/NumberOfPages/r $EXTRACT_FILE" "$pdf_data"
+
+echo "Creating new pdf with your bookmarks..."
+pdftk "$pdf" update_info_utf8 "$pdf_data" output "${pdf%.*}""_new.pdf"
+
+echo "Deleting leftovers"
+rm "$EXTRACT_FILE" "$pdf_data"

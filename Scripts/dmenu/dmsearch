@@ -1,0 +1,42 @@
+#!/bin/python3
+
+import subprocess
+import webbrowser
+import urllib.parse
+
+select_bg = "#c6bcee"
+select_fg = "#282A36"
+nselect_bg = "#282A36"
+nselect_fg = "#d7dae0"
+font = "Iosevka Nerd Font-20"
+dmenu = ['dmenu', "-i", "-l", "20", "-nb", nselect_bg, "-nf",
+         nselect_fg, "-sb", select_bg, "-sf", select_fg, "-fn", font]
+
+clipboard = ["xclip", "-o"]
+search = subprocess.run(clipboard, stdout=subprocess.PIPE).stdout.decode('utf-8')
+
+if search == "":
+    search = subprocess.run(
+        dmenu + ["-p", "Enter string to search"], stdout=subprocess.PIPE).stdout.encode('utf-8')
+    if search == "":
+        exit(0)
+
+options = [
+    "explainshell",
+    "wikipedia"
+]
+
+out = '\n'.join(options)
+result = subprocess.run(
+        dmenu + ['-p', '>'], 
+        stdout=subprocess.PIPE,
+        input=out.encode('utf-8')
+    ).stdout.decode('utf-8')
+
+print(result)
+if result == "explainshell\n":
+    site = "https://www.explainshell.com/explain?cmd=" + urllib.parse.quote_plus(search)
+    webbrowser.open(site, new=0, autoraise=True)
+elif result == "wikipedia\n":
+    site = "https://en.wikipedia.org/wiki/" + urllib.parse.quote_plus(search)
+    webbrowser.open(site, new=0, autoraise=True)

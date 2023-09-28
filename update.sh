@@ -20,8 +20,8 @@ update_app() {
     done
 }
 
-declare -a config=( "alacritty" "dunst" "fontconfig" "i3" "libinput-gestures.conf"
-    "mpv" "picom" "polybar" "rofi" "starship.toml" "zathura" 
+declare -a config=("alacritty" "dunst" "fontconfig" "i3" "libinput-gestures.conf"
+    "mpv" "picom" "polybar" "rofi" "starship.toml" "zathura"
 )
 declare -a code=("snippets" "keybindings.json" "settings.json")
 declare -a codium=("snippets" "keybindings.json" "settings.json")
@@ -29,9 +29,13 @@ declare -a vim=("autoload" "bitmaps" "vimrc")
 declare -a sublime=("User")
 declare -a audacity=("Theme")
 
+declare -a scripts=("apt" "asciiart" "basic" "calendar-pic" "colors" "cp"
+    "cron" "dmenu" "gestures" "i3" "i3lock" "imagemagick" "shell" "tools")
+
 update_app "in config" ".config" "${config[@]}"
 update_app "vim" ".vim" "${vim[@]}"
 update_app "code" ".config/Code/User" "${code[@]}"
 update_app "codium" ".config/VSCodium/User" "${codium[@]}"
 update_app "sublime" ".config/sublime-text/Packages" "${sublime[@]}"
 update_app "audacity" ".audacity-data" "${audacity[@]}"
+update_app "scripts" "Scripts" "${scripts[@]}"

@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+
+# @description - compile code of a cpp file
+# @usage - cpbuild [filename]
+
+if [ "${1: -4}" == ".cpp" ]; then
+    g++ -static \
+        -DLOCAL \
+        -lm \
+        -s \
+        -x c++ \
+        -Wall \
+        -Wextra \
+        -O2 \
+        -std=c++17 \
+        -o "${1:0:-4}" "$1"
+else
+    echo "Enter a valid C++ file."
+fi

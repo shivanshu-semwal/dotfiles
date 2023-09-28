@@ -1,0 +1,23 @@
+#!/bin/bash
+
+timer=$((60 * 1))       # 1 min in seconds
+
+wallpaper_dir="$HOME/Pictures/Wallpapers/gruvbox/dark"
+
+while true; do
+    [ -f "$HOME/.wallpaper" ] && feh --bg-scale ~/.wallpaper
+    
+    # some preprocessing on wallpaper
+    # IMG="$(find "$wallpaper_dir" -type f | shuf | head -1)"
+    # convert "$IMG" -resize 1920x1080^ -gravity center -crop 1920x1080+0+0 /tmp/wallpaper
+    
+    # file=$(date +"%d_%m_%y")
+    # file="/tmp/$file.png"
+    # if [ ! -f $file ];then python3 ~/Scripts/calendar-pic/cal.py; fi
+    # composite -geometry +10+10 -gravity SouthEast $file "/tmp/wallpaper" ~/.wallpaper
+
+    # copying new wallpaper
+    cp "$(find "$wallpaper_dir" -type f | shuf | head -1)" ~/.wallpaper
+    feh --bg-scale ~/.wallpaper
+    sleep "$timer"
+done

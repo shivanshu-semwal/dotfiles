@@ -1,0 +1,36 @@
+#!/bin/bash
+
+# Use: Toggle the status of the default active mic source for pulseaudio
+# Dependencies: pactl, dunstify
+# Description:
+# Working:
+# Author: Shivanshu
+
+# Get active audio source index
+CURRENT_SOURCE=$(pactl info | grep "Default Source" | cut -f3 -d" ")
+
+# List lines in pactl after the source name match and pick mute status
+
+OUT=$(pactl list sources | grep -A 10 "$CURRENT_SOURCE")
+CHECK="Mute: yes"
+
+case $1 in
+-info)
+    if [[ "$OUT" == *"$CHECK"* ]]; then
+        echo "MUTE"
+    else
+        echo "NOT MUTE"
+    fi
+    ;;
+*)
+    if [[ "$OUT" == *"$CHECK"* ]]; then
+        # echo "MUTE"
+        pactl set-source-mute @DEFAULT_SOURCE@ toggle
+        dunstify -a "Microphone" "Microphone" "Microphone \nUnmute" -r 100 -i mic-ready
+    else
+        # echo "NOT MUTE"
+        pactl set-source-mute @DEFAULT_SOURCE@ toggle
+        dunstify -a "Microphone" "Microphone" "Microphone \nMute" -r 100 -i microphone-sensitivity-muted
+    fi
+    ;;
+esac

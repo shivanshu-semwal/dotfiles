@@ -1,0 +1,53 @@
+#!/bin/bash
+
+# default variables
+zadir="$HOME"'/.cache/zaread/'
+reader="zathura"
+
+# if ~/.zaread doesn't exist, we create it.
+if [[ ! -d "$zadir" ]]; then
+  mkdir "$zadir"
+fi
+
+# clear .cache/zaread if the count is greater than 20
+no_of_files=$(ls -1 $zadir | wc -l)
+if [[ $no_of_files -gt 20 ]];then
+    rm -rf "$zadir"
+    mkdir "$zadir"
+fi
+
+
+# if no arguments exit.
+if [[ -z $@ ]]; then exit 1; fi
+
+file="$@"
+
+# get the size of file
+size=$(du "$file" | cut -f1)
+
+# open files less the approx 20mb
+if [[ $size -lt 20000 ]]; then
+    # notify-send "Opening $file."
+
+    # complete file name (path excluded):
+    file_name=$(echo "$@" | rev | cut -d'/' -f1 | rev)
+    # notify-send "Filename: $file_name."
+
+    # complete directory path:
+    # if it has been inserted absolute path ($@ starts with '/')
+    if [[ $@ =~ ^/ ]]; then
+        directory=$(echo "$@" | rev | cut -d'/' -f2- | rev)"/"
+    # else (relative path inserted)
+    else
+        dir=$(pwd)"/"$(echo "$@" | sed 's|.[^/]*$||')"/"
+        directory=$(echo "$dir" | sed 's|//|/|')
+    fi
+    libreoffice \
+        --convert-to pdf "$directory""$file_name" \
+        --headless \
+        --outdir "$zadir"
+    pdffile=$(echo "$file_name" | rev | cut -d'.' -f2- | rev)".pdf"
+    $reader "$zadir$pdffile"
+else
+    notify-send "Size too big $file."
+fi

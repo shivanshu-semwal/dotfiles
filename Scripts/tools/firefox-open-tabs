@@ -1,0 +1,28 @@
+#!/bin/python3
+
+import io, json, pathlib as p
+
+file_glob="*.default-release-1/sessionstore-backups/recovery.js*"
+
+fpath = None
+for i in p.Path("~/.mozilla/firefox").expanduser().glob(file_glob):
+    fpath = i
+    break
+
+if fpath == None:
+    quit(0)
+
+with io.open(fpath, "rb") as fd:
+    # read the data
+    if fpath.suffix == ".jsonlz4":
+        import lz4.block as lz4
+        fd.read(8)  # b"mozLz40\0"
+        jdata = json.loads(lz4.decompress(fd.read()))
+    else:
+        jdata = json.load(fd)
+    
+    # print the data
+    for win in jdata.get("windows"):
+        for tab in win.get("tabs"):
+            i = tab["index"] - 1
+            print(tab["entries"][i]["url"])

@@ -1,0 +1,50 @@
+#!/bin/bash
+[ -f "$HOME/.dmenurc" ] && . $HOME/.dmenurc || DMENU='dmenu -i'
+
+CODE="/media/totoro/Data/Programming"
+NOTES="/media/totoro/Data/Documents"
+DMEDITOR="code" # Defining the text editor to use.
+TERMINAL="alacritty"
+
+declare -a options=(
+  "cp - 0 - $CODE/cp"
+  "notes - 0 - $NOTES/notes"
+  "wnotes - 0 - $NOTES/git-notes/wnotes"
+  "playground - 1 - $CODE/playground"
+  "leetcode - 2 - $CODE/cp/docs/leetcode"
+)
+
+# function to check if an element is inside an array
+containsElement() {
+  local e match="$1"
+  shift
+  for e; do [[ "$e" == "$match" ]] && return 0; done
+  return 1
+}
+
+choice=$(printf '%s\n' "${options[@]}" | eval "$DMENU -p '  '")
+containsElement "$choice" "${options[@]}"
+res=$?
+[ $res == 1 ] && exit
+
+option=$(printf '%s\n' "${choice}" | awk -F '-' '{print $2}' | sed -re 's/^[[:blank:]]+|[[:blank:]]+$//g')
+file=$(printf '%s\n' "${choice}" | awk '{print $NF}' | sed -re 's/^[[:blank:]]+|[[:blank:]]+$//g')
+case "$option" in
+0)
+  # open file in editor
+  $DMEDITOR "$file"
+  ;;
+1)
+  # open file in terminal
+  $TERMINAL --working-directory "$file"
+  ;;
+2)
+  # open directory in dmenu
+  subfile=$(ls -1 "$file" | eval "$DMENU -p '  '")
+  [ -z "$subfile" ] && exit 1
+  $DMEDITOR "$file/$subfile"
+  ;;
+*)
+  exit 1
+  ;;
+esac

@@ -1,0 +1,16 @@
+#!/bin/bash
+[ -f "$HOME/.dmenurc" ] && . $HOME/.dmenurc || DMENU='dmenu -i'
+SONG_DIR="/media/totoro/Data/Music/SoundTracks/"
+if [ ! -d $SONG_DIR ]; then
+	echo "Drive not mounted. / Folder dosen't exists" | eval "$DMENU -p 'ERROR :-('"
+	exit 1
+fi
+
+if [ $# -ne 0 ]; then
+	var1=$(find $SONG_DIR -type f -name "*" | shuf | sed "s+$SONG_DIR++" | head -1)
+else
+	random_song=$(find $SONG_DIR -type f -name "*" | shuf | sed "s+$SONG_DIR++" | head -1)
+	var1=$(find $SONG_DIR -type f -name "*")
+	var1=$(echo -e "$random_song\n$var1" | sed "s+$SONG_DIR++" | eval "$DMENU -p ' '")
+fi
+[ -n "$var1" ] && audacious "$SONG_DIR/$var1"

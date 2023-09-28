@@ -1,0 +1,20 @@
+#!/bin/bash
+
+case $1 in
+-next)
+    playerctl next --all-players
+    ;;
+-play-pause)
+    playerctl play-pause --all-players
+    # dbus-send --print-reply --dest=org.mpris.MediaPlayer2.vlc /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause
+    ;;
+-previous)
+    playerctl previous --all-players
+    ;;
+-stop)
+    playerctl stop --all-players
+    ;;
+*)
+    exit 1
+    ;;
+esac

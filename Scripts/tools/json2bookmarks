@@ -1,0 +1,122 @@
+#!/usr/bin/python
+
+import os
+import json
+import favicon
+import sys
+
+
+def help():
+    """print the help for the script"""
+    print("""json2bookmarks [files]
+    files - json files which you want to convert to html bookmark file
+    """)
+
+
+if __name__ == "__main__":
+    n = len(sys.argv)
+    if n == 1:
+        help()
+        quit()
+    files = sys.argv[1:]
+
+    for filename in files:
+        file = open(filename + ".html", "w")
+        start = """<!DOCTYPE html>
+        <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <meta http-equiv="X-UA-Compatible" content="IE=edge">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>bookmarks</title>
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+        </head>
+        <body>
+        """
+
+        end = """
+        <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
+            <style>
+                @media (min-width: 576px) {}
+
+                @media (min-width: 768px) {}
+
+                @media (min-width: 992px) {
+                    .card-columns {
+                        column-count: 4;
+                    }
+                }
+
+                @media (min-width: 1200px) {
+                    .card-columns {
+                        column-count: 6;
+                    }
+                }
+            </style>
+        </body>
+        </html>
+        """
+
+        bookmarks = json.load(open(filename))
+
+        middle_start = """
+        <div class="container">
+        <div class="card-columns mt-5">
+        """
+
+        file.write(start)
+        file.write(middle_start)
+
+        for i in range(len(bookmarks['items'])):
+            card_start = """<div class="card shadow mb-5 bg-white rounded">"""
+
+            if 'image' in bookmarks['items'][i]:
+                card_image = "<img src=\"" \
+                    + bookmarks['items'][i]['image'] \
+                    + " \"class=\"card-img-top\" alt=\"...\">"
+            else:
+                try:
+                    image = favicon.get(bookmarks['items'][i]['site'])[0].url
+                    card_image = "<img src=\"" \
+                        + image \
+                        + " \"class=\"card-img-top\" alt=\"...\">"
+                except:
+                    image = ""
+                    card_image = ""
+                bookmarks['items'][i]['image'] = image
+
+            card_body = """<div class="card-body">"""
+
+            if 'title' in bookmarks['items'][i]:
+                card_title = "<h5 class=\"card-title\">" \
+                    + bookmarks['items'][i]['title'] \
+                    + "</h5>"
+            else:
+                card_title = ""
+
+            card_text = "<p class=\"card-text\">" \
+                        + "<a href=\"" \
+                        + bookmarks['items'][i]['site'] \
+                        + "\">" \
+                        + bookmarks['items'][i]['site'] \
+                        + "</a> </p>"
+
+            card_end = """</div>
+            </div>
+            """
+            file.write(card_start)
+            file.write(card_image)
+            file.write(card_body)
+            file.write(card_title)
+            file.write(card_text)
+            file.write(card_end)
+
+        middle_end = """</div>
+        </div>"""
+
+        file.write(middle_end)
+        file.write(end)
+
+        file_new = open(filename, "w")
+        file_new.write(json.dumps(bookmarks))

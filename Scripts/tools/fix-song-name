@@ -1,0 +1,13 @@
+#!/bin/bash
+
+# @author : shivanshu
+# @description: change name of song based on metadata
+
+FILE="$1"
+DATA=$(mid3v2 -l "$FILE")
+SONG_NAME=$(echo "$DATA" | grep ^TIT2= | cut -c 6- | sed 's|[:/#$*&@"?%]||g' | sed "s|'||g")
+SONG_ARTIST=$(echo "$DATA" | grep ^TPE1= | cut -c 6- | sed 's|[:/#$*&@"?%]||g' | sed "s|'||g")
+
+if [ -n "$SONG_NAME" ]; then
+    mv "$FILE" "$SONG_ARTIST - $SONG_NAME.mp3"
+fi

@@ -1,0 +1,25 @@
+#!/bin/bash
+#
+# Use: Shows saved bookmarks for Firefox Browser
+# Dependencies: dmenu and ./src/bookmarks.py
+
+# configuration
+[ -f "$HOME/.dmenurc" ] && . $HOME/.dmenurc || DMENU='dmenu -i'
+FILE="/media/totoro/Data/Documents/notes/links.md"
+LINKS=""
+COUNT=0
+while read -r line; do
+    COUNT=$(($COUNT + 1))
+    LINKS="${LINKS}${COUNT} ${line:2:${#line}}\n"
+done <$FILE
+choice=$(echo -e $LINKS | eval "$DMENU -p '  '" )
+[ -z "$choice" ] && exit
+
+no=$(echo $choice | grep -Ewo "^[0-9]*")
+line=$(sed "${no}q;d" "$FILE")
+
+sed -i "${no}d" "$FILE"
+sed -i "1i ${line}" $FILE
+
+link=$(echo $choice | grep -Ewo "https?://.*[^>]")
+firefox --new-tab "$link"

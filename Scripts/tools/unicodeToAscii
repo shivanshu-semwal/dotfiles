@@ -1,0 +1,17 @@
+#!/bin/bash
+
+START_QUOTE="‘"
+END_QUOTE="’"
+
+START_DQUOTE="“"
+END_DQUOTE="”"
+
+DASH=""
+
+sed -e "s/$START_QUOTE/'/g" \
+  -e "s/$END_QUOTE/'/g" \
+  -e 's/”/"/g' \
+  -e 's/—/-/g' \
+  -e 's/“/"/g' \
+  -i \
+  "$1"
