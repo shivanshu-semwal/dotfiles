@@ -1,0 +1,51 @@
+{
+    // http://www.sublimetext.com/docs/3/themes.html
+    "variables": {
+        "font_face": "IosevkaTerm Nerd Font",
+        "font_size": 18,
+    },
+    "rules": [
+
+        // Label Controls
+        {
+            "class": "label_control",
+            "font.face": "var(font_face)",
+            "font.size": "var(font_size)",
+        },
+
+        // Quick Panels
+        {
+            "class": "quick_panel_label",
+            "font.face": "var(font_face)",
+            "font.size": "var(font_size)",
+        },
+
+        // Sidebar Header
+        {
+            "class": "sidebar_heading",
+            "font.face": "var(font_face)",
+            "font.size": "var(font_size)",
+        },
+
+        // Sidebar Label
+        {
+            "class": "sidebar_label",
+            "font.face": "var(font_face)",
+            "font.size": "var(font_size)",
+        },
+
+        // Tab Label
+        {
+            "class": "tab_label",
+            "font.face": "var(font_face)",
+            "font.size": "var(font_size)",
+        },
+
+        // Tooltip Control
+        {
+            "class": "tool_tip_label_control",
+            "font.face": "var(font_face)",
+            "font.size": "var(font_size)",
+        },      
+    ]
+}

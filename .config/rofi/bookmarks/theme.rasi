@@ -1,0 +1,17 @@
+configuration{
+    show-icons:                 true;
+}
+
+@import                          "../list-theme.rasi"
+
+window {
+  width:                        80%;
+}
+
+entry {
+    placeholder:                 "Search Bookmarks";
+}
+
+listview {
+    lines:                      20;
+}

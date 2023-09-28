@@ -1,0 +1,434 @@
+# AUTOMATICALLY STARTING APPLICATIONS ON I3 STARTUP
+# exec [--no-startup-id] <command>
+# exec_always [--no-startup-id] <command>
+exec --no-startup-id lxpolkit
+exec --no-startup-id nm-applet
+exec --no-startup-id pasystray
+exec --no-startup-id dunst
+exec_always --no-startup-id setxkbmap -option "caps:swapescape"
+
+exec --no-startup-id /usr/lib/x86_64-linux-gnu/libexec/polkit-kde-authentication-agent-1
+exec --no-startup-id /usr/lib/x86_64-linux-gnu/libexec/org_kde_powerdevil
+exec --no-startup-id /usr/share/libpam-kwallet-common/pam_kwallet_init
+exec --no-startup-id /usr/lib/x86_64-linux-gnu/libexec/kdeconnectd
+exec --no-startup-id /usr/lib/x86_64-linux-gnu/libexec/DiscoverNotifier
+exec --no-startup-id /usr/bin/gnome-keyring-daemon --start --components=ssh,secrets,pkcs1
+
+exec --no-startup-id libinput-gestures-setup start
+exec --no-startup-id env QT_QPA_PLATFORMTHEME=qt5ct flameshot
+exec --no-startup-id sleep 3 && env QT_QPA_PLATFORMTHEME=qt5ct copyq
+exec --no-startup-id sleep 3 && env QT_QPA_PLATFORMTHEME=qt5ct kdeconnect-indicator
+# exec --no-startup-id ulauncher --hide-window
+# exec --no-startup-id ibus-daemon
+# exec --no-startup-id blueman-applet
+# exec --no-startup-id xfce4-power-manager
+# exec --no-startup-id /usr/bin/syncthing serve --no-browser --logfile=default
+
+exec --no-startup-id idleshutdown
+exec --no-startup-id dmrecent
+exec_always --no-startup-id pkill wallpaper; wallpaper
+exec_always --no-startup-id $HOME/.config/polybar/launch.sh compact
+exec_always --no-startup-id sleep 3 && $HOME/.config/picom/launch.sh
+# exec_always i3expod.py -w ~/.wallpaper
+# exec_always i3-layouts
+
+## Set mod key (Mod1=<Alt>, Mod4=<Super>)
+set $mod Mod4
+set $mod_next Mod1
+
+## FONTS
+# font <X core font description>
+# font pango:<family list> [<style options>] <size>
+font xft:IosevkaTerm Nerd Font 12
+
+## FLOATING MODIFIER
+floating_modifier $mod
+
+## ORIENTATION FOR NEW WORKSPACES
+# default_orientation horizontal|vertical|auto
+default_orientation auto
+
+## LAYOUT FOR NEW WORKSPACES
+# workspace_layout default|stacking|tabbed
+workspace_layout default
+
+## WINDOW TITLE ALIGNMENT
+# title_align left|center|right
+title_align center
+
+## DEFAULT BORDER STYLE FOR NEW WINDOWS
+# default_border normal|none|pixel
+# default_border normal|pixel <px>
+# default_floating_border normal|none|pixel
+# default_floating_border normal|pixel <px>
+default_border pixel 3
+default_floating_border pixel 2
+
+# floating_minimum_size 75 x 50
+# floating_maximum_size 400 x 300
+
+# HIDING BORDERS ADJACENT TO THE SCREEN EDGES
+# hide_edge_borders none|vertical|horizontal|both|smart
+hide_edge_borders smart
+ 
+# ARBITRARY COMMANDS FOR SPECIFIC WINDOWS (for_window)
+# for_window <criteria> <command>
+for_window [title="File Transfer*"] floating enable, move position center
+for_window [class="conky"] border pixel 0 
+for_window [class="Gnome-calculator"] floating enable
+for_window [class="Gnome-calendar"] floating enable, move position center
+for_window [class="Gnome-todo"] floating enable, move position center
+for_window [class="Lxappearance"] floating enable
+for_window [class="Pavucontrol"] floating enable
+for_window [class="Conky"] floating enable
+for_window [class="qt5ct"] floating enable sticky enable
+for_window [class="Qtconfig-qt4"] floating enable sticky enable
+for_window [class="Audacious"] no_focus
+for_window [class="copyq"] floating enable, move position centerds
+for_window [class="Ulauncher"] floating enable, move position center
+for_window [class="xpad"] floating enable
+for_window [class="conky"] floating enable
+for_window [class="Audacious"][title="Album Art"] floating enable 
+for_window [class="Audacious"] floating enable, move position center
+for_window [class="wallpaper"] floating enable
+for_window [class="XAVA"] floating enable
+for_window [class="SimpleScreenRecorder"] floating enable
+for_window [class="feh"][title="timetable"] floating enable
+for_window [class="mpv"] floating enable move position center
+for_window [class="(?i)tint2"] floating enable, move position center
+for_window [class="konsole" title="fkonsole"] floating enable, resize set 600px 400px, move position center
+for_window [class="fcitx"] floating enable
+for_window [class="Gthumb"] floating enable
+for_window [class="Screenkey"] floating enable
+for_window [class="Qalculate-gtk"] floating enable
+for_window [class="Display-im6.q16"] floating enable
+for_window [class="flameshot"] floating enable
+for_window [class="gui-Main"] floating enable
+for_window [class="vlc"] floating enable
+#for_window [class="vlc" window_type="normal"] floating enable, move position center
+
+# switch to workspace with urgent window automatically
+for_window [urgent=latest] focus
+
+for_window[window_role="Dialog*"] focus
+# for_window[window_type="normal"][class="(?i)firefox"] move container to workspace 1
+# print all window titles bold
+for_window [class=".*"] title_format "<b>%title</b>"
+#for_window [class=".*"][floating] move position center
+
+# Application focus smart|urgent|focus|none
+focus_on_window_activation smart
+
+popup_during_fullscreen leave_fullscreen
+# for_window [class=^.*] floating enable
+
+# DON'T FOCUS WINDOW UPON OPENING
+# no_focus <criteria>
+
+# KEYBOARD BINDINGS
+# bindsym [--release] [<Group>+][<Modifiers>+]<keysym> command
+# bindcode [--release] [<Group>+][<Modifiers>+]<keycode> command
+
+# APPS
+bindsym $mod+F1                 exec firefox
+bindsym $mod+F2                 exec dolphin
+bindsym $mod+F3                 exec google-chrome --force-dark-mode --password-store=kwallet5
+bindsym $mod+Return             exec alacritty
+bindsym $mod+Shift+Return       exec alacritty --working-directory `xcwd`
+bindsym $mod+t                  exec --no-startup-id ocr
+bindsym $mod+Shift+q            kill
+
+# DMENU SCRIPTS
+bindsym $mod+colon              exec --no-startup-id dmplay
+bindsym $mod+Shift+b            exec --no-startup-id dmconf
+bindsym $mod+n                  exec --no-startup-id dmlinks
+bindsym $mod+bracketright       exec --no-startup-id dmrecent
+bindsym $mod+u                  exec --no-startup-id dmprojects
+
+# ROFI LAUNCHERS
+set $rofi ~/.config/rofi
+bindsym $mod+i           exec --no-startup-id "$rofi/wmtools/launch.sh"
+bindsym $mod+period      exec --no-startup-id "$rofi/emoji/launch.sh"
+bindsym $mod+slash       exec --no-startup-id "$rofi/alacritty/launch.sh"
+bindsym $mod+b           exec --no-startup-id "$rofi/bookmarks/launch.sh"
+bindsym $mod+Shift+n     exec --no-startup-id "$rofi/calculator/launch.sh"
+bindsym $mod+apostrophe  exec --no-startup-id "$rofi/powermenu/launch.sh"
+bindsym $mod+d           exec --no-startup-id "$rofi/app-launcher/launch.sh"
+bindsym $mod+Shift+d     exec --no-startup-id "$rofi/app-launcher/launch.sh drun"
+bindsym $mod+Tab         exec --no-startup-id "$rofi/app-launcher/launch.sh window"
+bindsym $mod+y           exec --no-startup-id "$rofi/shortcuts/launch.sh"
+bindsym $mod+o           exec --no-startup-id "$rofi/notification/rofi_notif_center.py"
+
+# SCREENSHOT
+bindsym $mod+Print       --release exec --no-startup-id scrot $(date '+%Y-%m-%d-%H%M%S').png -e 'mv $f ~/Pictures/ml' -u -q 100
+bindsym Print                      exec --no-startup-id flameshot gui
+# SCREEN BRIGHTNESS CONTROLS
+bindsym XF86MonBrightnessUp   exec brightness -inc
+bindsym XF86MonBrightnessDown exec brightness -dec
+# SOUND CONTROLS
+bindsym XF86AudioLowerVolume exec --no-startup-id volume -dec
+bindsym XF86AudioRaiseVolume exec --no-startup-id volume -inc
+bindsym XF86AudioMute        exec --no-startup-id volume -mute
+bindsym XF86AudioMicMute     exec --no-startup-id microphone
+## MUSIC CONTROLS
+bindsym XF86AudioPlay exec --no-startup-id music -play-pause
+bindsym XF86AudioStop exec --no-startup-id music -stop
+bindsym XF86AudioNext exec --no-startup-id music -next
+bindsym XF86AudioPrev exec --no-startup-id music -previous
+
+# xkill utility to send kill siginal
+bindsym $mod+Ctrl+x --release exec --no-startup-id notify-send "xkill" "Select an app to kill" -i dialog-error && xkill
+
+# toggle polybar state
+bindsym $mod+m exec --no-startup-id polybar-msg cmd toggle
+# bindsym $mod+y exec --no-startup-id xpad --toggle
+
+bindsym $mod+l exec "$HOME/Scripts/i3lock/launch.sh"
+
+bindsym $mod+Left  focus left
+bindsym $mod+Down  focus down
+bindsym $mod+Up    focus up
+bindsym $mod+Right focus right
+
+# bindsym $mod+h focus left
+# bindsym $mod+j focus down
+# bindsym $mod+k focus up
+# bindsym $mod+l focus right
+
+bindsym $mod+Shift+Left  move left
+bindsym $mod+Shift+Down  move down
+bindsym $mod+Shift+Up    move up
+bindsym $mod+Shift+Right move right
+
+# bindsym $mod+Shift+h move left
+# bindsym $mod+Shift+j move down
+# bindsym $mod+Shift+k move up
+# bindsym $mod+Shift+l move right
+
+bindsym $mod+Shift+p     move workspace to output  right
+bindsym $mod+p           move workspace to output left 
+bindsym $mod+bracketleft exec --no-startup-id swap-workspaces
+# bindsym $mod+y exec --no-startup-id i3-msg "move position center"
+
+# workspace back and forth (with/without active container)
+workspace_auto_back_and_forth yes
+bindsym $mod+grave       workspace back_and_forth
+bindsym $mod+Shift+grave move container to workspace back_and_forth; workspace back_and_forth
+
+# change focus between tiling / floating windows
+bindsym $mod+space focus mode_toggle
+
+# toggle sticky
+bindsym $mod+Shift+s sticky toggle; exec notify-send "i3" "Sticky toggle" -i preferences-system-windows
+
+# focus the parent container
+# bindsym $mod+a focus parent
+
+# move the currently focused window to the scratchpad
+bindsym $mod+Shift+minus move scratchpad; exec notify-send "i3" "Send to scratchpad" -i preferences-system-windows
+bindsym $mod+minus       scratchpad show
+# bindsym $mod+F11 exec --no-startup-id "~/Scripts/i3/launch.sh"
+# bindsym $mod+F12 [class="Firefox"] scratchpad show
+
+#navigate workspaces next / previous
+# bindsym $mod+Tab workspace next
+bindsym $mod+Shift+Tab workspace prev
+# WORKSPACE NAMES
+set $ws1 "1"
+set $ws2 "2"
+set $ws3 "3"
+set $ws4 "4"
+set $ws5 "5"
+set $ws6 "6"
+set $ws7 "7"
+set $ws8 "8"
+set $ws9 "9"
+set $ws10 "10"
+# SWITCH TO WORKSPACE
+bindsym $mod+1 workspace $ws1
+bindsym $mod+2 workspace $ws2
+bindsym $mod+3 workspace $ws3
+bindsym $mod+4 workspace $ws4
+bindsym $mod+5 workspace $ws5
+bindsym $mod+6 workspace $ws6
+bindsym $mod+7 workspace $ws7 
+bindsym $mod+8 workspace $ws8
+bindsym $mod+9 workspace $ws9
+bindsym $mod+0 workspace $ws10
+# MOVE FOCUSED CONTAINER TO WORKSPACE
+bindsym $mod+Ctrl+1 move container to workspace $ws1
+bindsym $mod+Ctrl+2 move container to workspace $ws2
+bindsym $mod+Ctrl+3 move container to workspace $ws3
+bindsym $mod+Ctrl+4 move container to workspace $ws4
+bindsym $mod+Ctrl+5 move container to workspace $ws5
+bindsym $mod+Ctrl+6 move container to workspace $ws6
+bindsym $mod+Ctrl+7 move container to workspace $ws7
+bindsym $mod+Ctrl+8 move container to workspace $ws8
+bindsym $mod+Ctrl+9 move container to workspace $ws9
+bindsym $mod+Ctrl+0 move container to workspace $ws10
+# MOVE TO WORKSPACE WITH FOCUSED CONTAINER
+bindsym $mod+Shift+1 move container to workspace $ws1; workspace $ws1
+bindsym $mod+Shift+2 move container to workspace $ws2; workspace $ws2
+bindsym $mod+Shift+3 move container to workspace $ws3; workspace $ws3
+bindsym $mod+Shift+4 move container to workspace $ws4; workspace $ws4
+bindsym $mod+Shift+5 move container to workspace $ws5; workspace $ws5
+bindsym $mod+Shift+6 move container to workspace $ws6; workspace $ws6
+bindsym $mod+Shift+7 move container to workspace $ws7; workspace $ws7
+bindsym $mod+Shift+8 move container to workspace $ws8; workspace $ws8
+bindsym $mod+Shift+9 move container to workspace $ws9; workspace $ws9
+bindsym $mod+Shift+0 move container to workspace $ws10; workspace $ws10
+
+# Open applications on specific workspaces
+assign [class="(?i)firefox" window_type="normal"] $ws1
+assign [class="(?i)google-chrome" window_type="normal"] $ws1
+assign [class="Code" window_type="normal"] $ws3
+assign [class="dolphin" window_type="normal"] $ws9
+assign [class="discord" window_type="normal"] $ws8
+assign [class="TelegramDesktop" window_type="normal"] $ws8
+assign [class="vlc" window_type="normal"] $ws10
+assign [class="thunderbird" window_type="normal"] $ws10
+assign [class="Audacious" window_type="normal"] $ws10
+# assign [class="XAVA" window_type="normal"] $ws10
+# assign [class="(?i)music"] $ws10
+
+# RELOAD THE CONFIGURATION FILE
+bindsym $mod+Shift+r reload; exec notify-send "i3" "Reloaded config" -i reload
+# RESTART I3 INPLACE (PRESERVES YOUR LAYOUT/SESSION, CAN BE USED TO UPGRADE I3)
+bindsym $mod+Shift+c exec notify-send "i3" "Restart" -i system-restart-panel; restart
+# exit i3 (logs you out of your X session)
+# bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Do you want to exit' -b 'Yes' 'i3-msg exit' -f 'VictorMono Nerd Font'"
+
+# BINDING MODES
+#
+# config directive
+# mode [--pango_markup] <name>
+#
+# command
+# mode <name>
+#
+set $apps (1)firefox, (2)dolphin
+mode "$apps" {
+        bindsym 1 exec firefox
+        bindsym 2 exec dolphin
+
+        # exit system mode: "Enter" or "Escape"
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+# bindsym $mod+slash mode "$apps"
+# SET SHUT DOWN, RESTART AND LOCKING FEATURES
+# bindsym $mod+Shift+l mode "$mode_system"
+set $mode_system (l)ock, (e)xit, switch_(u)ser, (s)uspend, (h)ibernate, (r)eboot, (Shift+s)hutdown
+mode "$mode_system" {
+        bindsym l exec --no-startup-id i3exit lock, mode "default"
+        bindsym s exec --no-startup-id i3exit suspend, mode "default"
+        bindsym u exec --no-startup-id i3exit switch_user, mode "default"
+        bindsym e exec --no-startup-id i3exit logout, mode "default"
+        bindsym h exec --no-startup-id i3exit hibernate, mode "default"
+        bindsym r exec --no-startup-id i3exit reboot, mode "default"
+        bindsym Shift+s exec --no-startup-id i3exit shutdown, mode "default"
+        # EXIT SYSTEM MODE: "ENTER" OR "ESCAPE"
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+# RESIZE WINDOW (YOU CAN ALSO USE THE MOUSE FOR THAT)
+bindsym $mod+r mode "resize"
+mode "resize" {
+        bindsym Left resize shrink width 8 px or 8 ppt
+        bindsym Down resize grow height 8 px or 8 ppt
+        bindsym Up resize shrink height 8 px or 8 ppt
+        bindsym Right resize grow width 8 px or 8 ppt
+        # EXIT RESIZE MODE: ENTER OR ESCAPE
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+        bindsym 1 exec --no-startup-id i3-msg resize set 25 ppt 25 ppt
+        bindsym 2 exec --no-startup-id i3-msg resize set 40 ppt 40 ppt
+        bindsym 3 exec --no-startup-id i3-msg resize set 50 ppt 50 ppt
+        bindsym 4 exec --no-startup-id i3-msg resize set 60 ppt 60 ppt
+        bindsym 5 exec --no-startup-id i3-msg resize set 70 ppt 70 ppt
+}
+
+# Lock screen
+# bindsym $mod+Shift+L exec --no-startup-id i3lock
+
+# SETTINGS FOR i3-gaps
+
+# Set inner/outer gaps
+# gaps inner 8
+# gaps outer 8
+
+# Additionally, you can issue commands with the following syntax. This is useful to bind keys to changing the gap size.
+# gaps inner|outer current|all set|plus|minus <px>
+# gaps inner all set 10
+# gaps outer all plus 5
+
+# Smart gaps (gaps used if only more than one container on the workspace)
+# smart_gaps on
+
+# Smart borders (draw borders around container only if it is not the only container on this workspace)
+# on|no_gaps (on=always activate and no_gaps=only activate if the gap size to the edge of the screen is 0)
+#smart_borders on
+
+# Press $mod+Shift+g to enter the gap mode. Choose o or i for modifying outer/inner gaps. Press one of + / - (in-/decrement for current workspace) or 0 (remove gaps for current workspace). If you also press Shift with these keys, the change will be global for all workspaces.
+set $mode_gaps Gaps: (o) outer, (i) inner
+set $mode_gaps_outer Outer Gaps: +|-|0 (local), Shift + +|-|0 (global)
+set $mode_gaps_inner Inner Gaps: +|-|0 (local), Shift + +|-|0 (global)
+bindsym $mod+Shift+g mode "$mode_gaps"
+
+mode "$mode_gaps" {
+        bindsym o      mode "$mode_gaps_outer"
+        bindsym i      mode "$mode_gaps_inner"
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+mode "$mode_gaps_inner" {
+        bindsym plus  gaps inner current plus 5
+        bindsym minus gaps inner current minus 5
+        bindsym 0     gaps inner current set 0
+
+        bindsym Shift+plus  gaps inner all plus 5
+        bindsym Shift+minus gaps inner all minus 5
+        bindsym Shift+0     gaps inner all set 0
+
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+mode "$mode_gaps_outer" {
+        bindsym plus  gaps outer current plus 5
+        bindsym minus gaps outer current minus 5
+        bindsym 0     gaps outer current set 0
+
+        bindsym Shift+plus  gaps outer all plus 5
+        bindsym Shift+minus gaps outer all minus 5
+        bindsym Shift+0     gaps outer all set 0
+
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
+# CHANGING COLORS
+# <colorclass>         <border> <background> <text>  <indicator> <child_border>
+client.focused          #3c3836   #1d2021    #ebdbb2  #1d2021      #7c6f64
+client.focused_inactive #3c3836   #282828    #ebdbb2  #1d2021      #7c6f64
+client.unfocused        #3c3836   #282828    #928374  #1d2021      #282a36
+client.urgent           #3c3836   #cc241d    #ebdbb2  #cc241d      #cc241d
+client.placeholder      #3c3836   #282828    #ebdbb2  #1d2021      #7c6f64
+client.background       #ebdbb2
+
+# split orientation
+bindsym $mod+e split horizontal;exec notify-send 'tile horizontally'
+bindsym $mod+a split vertical;exec notify-send 'tile vertically'
+# bindsym $mod+q split toggle
+# bindsym $mod+q split toggle
+
+# toggle fullscreen mode for the focused container
+bindsym $mod+f fullscreen toggle; exec notify-send "i3" "Fullscreen Mode" -i preferences-system-windows
+
+# change container layout (stacked, tabbed, toggle split)
+bindsym $mod+s layout stacking; exec notify-send "i3" "Stacking Mode" -i preferences-system-windows
+bindsym $mod+w layout tabbed; exec notify-send "i3" "Tab Mode" -i preferences-system-windows
+# bindsym $mod+e layout toggle split;  exec notify-send "i3" "Toggle Split" -i preferences-system-windows
+bindsym $mod+q layout toggle
+
+# toggle tiling / floating
+bindsym $mod+Shift+space floating toggle; exec notify-send "i3" "Floating on" -i preferences-system-windows

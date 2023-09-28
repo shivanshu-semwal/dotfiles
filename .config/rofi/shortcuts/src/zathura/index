@@ -1,0 +1,7 @@
+K          :: Move to upper or lower entry 
+J          :: Expand enrty 
+L          :: Expand all entries 
+H          :: Collapse entry 
+Shift + H  :: Collapse all entries 
+Space      :: Select an open entry 
+Enter      :: Select an open entry 

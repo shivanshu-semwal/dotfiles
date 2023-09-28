@@ -1,0 +1,40 @@
+set notification-error-bg       "#e05561" # Red
+set notification-error-fg       "#d7dae0" # Foreground
+set notification-warning-bg     "#d18f52" # Orange
+set notification-warning-fg     "#44475a" # Selection
+set notification-bg             "#282a36" # Background
+set notification-fg             "#d7dae0" # Foreground
+
+set completion-bg               "#282a36" # Background
+set completion-fg               "#6272a4" # Comment
+set completion-group-bg         "#282a36" # Background
+set completion-group-fg         "#6272a4" # Comment
+set completion-highlight-bg     "#44475a" # Selection
+set completion-highlight-fg     "#d7dae0" # Foreground
+
+set index-bg                    "#282a36" # Background
+set index-fg                    "#d7dae0" # Foreground
+set index-active-bg             "#44475a" # Current Line
+set index-active-fg             "#d7dae0" # Foreground
+
+set inputbar-bg                 "#282a36" # Background
+set inputbar-fg                 "#d7dae0" # Foreground
+
+set statusbar-bg                "#282a36" # Background
+set statusbar-fg                "#d7dae0" # Foreground
+
+set highlight-color             "#ffb86c" # Orange
+set highlight-active-color      "#ff79c6" # Pink
+
+set default-bg                  "#282a36" # Background
+set default-fg                  "#d7dae0" # Foreground
+
+set render-loading              true
+set render-loading-fg           "#282a36" # Background
+set render-loading-bg           "#d7dae0" # Foreground
+
+# Recolor mode settings
+set recolor-lightcolor          "#282c33" # Background
+set recolor-darkcolor           "#e6efff" # Foreground
+set recolor                     true
+# set recolor-keephue             true      # keep original color

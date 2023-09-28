@@ -1,0 +1,19 @@
+J                 :: Go to next or previous page
+K                 :: Go to next or previous page
+Space             :: Scroll a full page
+Shift + Space     :: Scroll down
+Backspace         :: Scroll up
+G then G          :: Go to the first page
+Shift + G         :: Go to the last page
+N then Shift + G  :: Go to a specific page
+Ctrl + C          :: Abort
+Esc               :: Abort
+F11               :: Switch to normal mode
++                 :: Zoom in
+-                 :: Zoom out
+=                 :: Zoom to the original size
+Z then I          :: Zoom in
+Z then O          :: Zoom out
+Z then 0          :: Zoom to the original size
+N then =          :: Zoom to size n
+Q                 :: Quit

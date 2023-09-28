@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+PLAY=""
+PAUSE=""
+STOP=""
+ICON=""
+
+SONG="$ICON $(playerctl metadata xesam:artist) | $(playerctl metadata xesam:title)"
+echo "$SONG"

@@ -1,0 +1,13 @@
+{
+	"theme": "Gruvbox Material Dark.sublime-theme",
+	"font_size": 26,
+	"font_face": "IosevkaTerm Nerd Font",
+	"color_scheme": "Packages/Gruvbox Dark/gruvbox.tmTheme",
+	"ignored_packages":
+	[
+		"Vintage",
+	],
+	"hot_exit": false,
+  	"remember_open_files": false,
+  	"remember_workspace": false,
+}

@@ -1,0 +1,7 @@
+Space         :: Scroll a full page
+Shift + Space :: Scroll down
+Backspace     :: Scroll up
+Ctrl + C      :: Abort
+Esc           :: Abort
+F5            :: Switch to normal mode
+Q             :: Quit

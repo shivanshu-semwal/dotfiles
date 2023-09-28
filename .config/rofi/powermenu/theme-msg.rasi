@@ -1,0 +1,26 @@
+/*****----- Global Properties -----*****/
+@import                          "theme.rasi"
+
+window {
+    location:                   center; 
+    anchor:                     center; 
+    fullscreen:                 false; 
+    width:                      250px;
+}
+
+mainbox {
+    children:                   [ "message", "listview" ];
+}
+
+listview {
+    columns:                    2; 
+    lines:                      1;
+}
+
+element-text {
+    horizontal-align:           0.5;
+}
+
+textbox {
+    horizontal-align:           0.5;
+}

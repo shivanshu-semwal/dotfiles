@@ -1,0 +1,19 @@
+configuration {
+    modi:                       "drun";
+    display-drun:               " ";
+    show-icons:                 false;
+}
+
+@import                          "../list-theme.rasi"
+
+window {
+    width:                       15%;
+}
+
+entry {
+    placeholder:                 "Search Apps";
+}
+
+listview {
+    lines:                      6;
+}

@@ -1,0 +1,17 @@
+configuration{
+    show-icons: f                false;
+}
+
+@import                          "../list-theme.rasi"
+
+window {
+    width:                        15%;
+}
+
+entry {
+    placeholder:                 "Select action";
+}
+
+listview {
+    lines:                      6;
+}

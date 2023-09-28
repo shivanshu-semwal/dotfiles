@@ -1,0 +1,97 @@
+Win+F1                    :: firefox 
+Win+F2                    :: dolphin 
+Win+F3                    :: google-chrome --force-dark-mode --password-store=kwallet5 
+Win+Return                :: alacritty 
+Win+Shift+Return          :: alacritty --working-directory `xcwd` 
+Win+t                     :: ocr 
+Win+Shift+q               :: kill 
+Win+colon                 :: dmplay 
+Win+Shift+b               :: dmconf 
+Win+n                     :: dmlinks 
+Win+bracketright          :: dmrecent 
+Win+u                     :: dmprojects 
+Win+i                     :: dmtools 
+Win+period                :: "$rofi/emoji/launch.sh" 
+Win+slash                 :: "$rofi/alacritty/launch.sh" 
+Win+b                     :: "$rofi/bookmarks/launch.sh" 
+Win+Shift+n               :: "$rofi/calculator/launch.sh" 
+Win+apostrophe            :: "$rofi/powermenu/launch.sh" 
+Win+d                     :: "$rofi/app-launcher/launch.sh" 
+Win+Shift+d               :: "$rofi/app-launcher/launch.sh drun" 
+Win+Tab                   :: "$rofi/app-launcher/launch.sh window" 
+Win+y                     :: "$rofi/shortcuts/launch.sh" 
+Win+o                     :: "$rofi/notification/rofi_notif_center.py" 
+Win+Print                 :: scrot $(date '+%Y-%m-%d-%H%M%S').png -e 'mv $f ~/Pictures/ml' -u -q 100 
+Print                     :: flameshot gui 
+XF86MonBrightnessUp       :: brightness -inc 
+XF86MonBrightnessDown     :: brightness -dec 
+XF86AudioLowerVolume      :: volume -dec 
+XF86AudioRaiseVolume      :: volume -inc 
+XF86AudioMute             :: volume -mute 
+XF86AudioMicMute          :: microphone 
+XF86AudioPlay             :: music -play-pause 
+XF86AudioStop             :: music -stop 
+XF86AudioNext             :: music -next 
+XF86AudioPrev             :: music -previous 
+Win+Ctrl+x                :: notify-send "xkill" "Select an app to kill" -i dialog-error && xkill 
+Win+m                     :: polybar-msg cmd toggle 
+Win+l                     :: "$HOME/Scripts/i3lock/launch.sh" 
+Win+Left                  :: focus left 
+Win+Down                  :: focus down 
+Win+Up                    :: focus up 
+Win+Right                 :: focus right 
+Win+Shift+Left            :: move left 
+Win+Shift+Down            :: move down 
+Win+Shift+Up              :: move up 
+Win+Shift+Right           :: move right 
+Win+Shift+p               :: move workspace to output right 
+Win+p                     :: move workspace to output left 
+Win+bracketleft           :: swap-workspaces 
+Win+grave                 :: workspace back_and_forth 
+Win+Shift+grave           :: move container to workspace back_and_forth; workspace back_and_forth 
+Win+space                 :: focus mode_toggle 
+Win+Shift+s               :: sticky toggle; notify-send "i3" "Sticky toggle" -i preferences-system-windows 
+Win+Shift+minus           :: move scratchpad; notify-send "i3" "Send to scratchpad" -i preferences-system-windows 
+Win+minus                 :: scratchpad show 
+Win+Shift+Tab             :: workspace prev 
+Win+1                     :: workspace $ws1 
+Win+2                     :: workspace $ws2 
+Win+3                     :: workspace $ws3 
+Win+4                     :: workspace $ws4 
+Win+5                     :: workspace $ws5 
+Win+6                     :: workspace $ws6 
+Win+7                     :: workspace $ws7 
+Win+8                     :: workspace $ws8 
+Win+9                     :: workspace $ws9 
+Win+0                     :: workspace $ws10 
+Win+Ctrl+1                :: move container to workspace $ws1 
+Win+Ctrl+2                :: move container to workspace $ws2 
+Win+Ctrl+3                :: move container to workspace $ws3 
+Win+Ctrl+4                :: move container to workspace $ws4 
+Win+Ctrl+5                :: move container to workspace $ws5 
+Win+Ctrl+6                :: move container to workspace $ws6 
+Win+Ctrl+7                :: move container to workspace $ws7 
+Win+Ctrl+8                :: move container to workspace $ws8 
+Win+Ctrl+9                :: move container to workspace $ws9 
+Win+Ctrl+0                :: move container to workspace $ws10 
+Win+Shift+1               :: move container to workspace $ws1; workspace $ws1 
+Win+Shift+2               :: move container to workspace $ws2; workspace $ws2 
+Win+Shift+3               :: move container to workspace $ws3; workspace $ws3 
+Win+Shift+4               :: move container to workspace $ws4; workspace $ws4 
+Win+Shift+5               :: move container to workspace $ws5; workspace $ws5 
+Win+Shift+6               :: move container to workspace $ws6; workspace $ws6 
+Win+Shift+7               :: move container to workspace $ws7; workspace $ws7 
+Win+Shift+8               :: move container to workspace $ws8; workspace $ws8 
+Win+Shift+9               :: move container to workspace $ws9; workspace $ws9 
+Win+Shift+0               :: move container to workspace $ws10; workspace $ws10 
+Win+Shift+r               :: reload; notify-send "i3" "Reloaded config" -i reload 
+Win+Shift+c               :: notify-send "i3" "Restart" -i system-restart-panel; restart 
+Win+r                     :: mode "resize" 
+Win+Shift+g               :: mode "$mode_gaps" 
+Win+e                     :: split horizontal; notify-send 'tile horizontally' 
+Win+a                     :: split vertical; notify-send 'tile vertically' 
+Win+f                     :: fullscreen toggle; notify-send "i3" "Fullscreen Mode" -i preferences-system-windows 
+Win+s                     :: layout stacking; notify-send "i3" "Stacking Mode" -i preferences-system-windows 
+Win+w                     :: layout tabbed; notify-send "i3" "Tab Mode" -i preferences-system-windows 
+Win+q                     :: layout toggle 
+Win+Shift+space           :: floating toggle; notify-send "i3" "Floating on" -i preferences-system-windows 

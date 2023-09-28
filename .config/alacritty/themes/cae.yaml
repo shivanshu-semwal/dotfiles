@@ -1,0 +1,17 @@
+# cae on discord
+colors:
+  # default colors
+  primary:
+    background: '0xfffffe'
+    foreground: '0x5c6a6c'
+
+  # normal colors
+  normal:
+    black: '0x5c6a6c'
+    red: '0xe0a1b0'
+    green: '0xa9b9c3'
+    yellow: '0xddce80'
+    blue: '0x9fc2dd'
+    magenta: '0xc0aec6'
+    cyan: '0xcadfe9'
+    white: '0xdee1e1'

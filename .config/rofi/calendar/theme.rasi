@@ -1,0 +1,118 @@
+configuration{
+    show-icons: false;
+}
+
+/*****----- Global Properties -----*****/
+@import                          "../shared/colors.rasi"
+@import                          "../shared/fonts.rasi"
+
+/*****----- Main Window -----*****/
+window {
+    transparency:                "real";
+    background-color:            @background;
+    border:                      1px;
+    border-color:                @selected;
+    border-radius:               10px;
+    padding:                     3;
+    width:                       348px;
+}
+
+/*****----- Main Box -----*****/
+mainbox {
+    border:                      0;
+    padding:                     0;
+    background-color:            transparent;
+    children:                    [ "inputbar", "message", "listview" ];
+}
+
+/*****----- Inputbar -----*****/
+
+inputbar {
+    border:                      0;
+    children:                    [ "prompt" ];
+    spacing:                     0;
+    background-color:            @background-alt;
+    text-color:                  @foreground;
+    padding:                     1px ;
+}
+
+prompt {
+    background-color:            inherit;
+    text-color:                  inherit;
+    spacing:                     0;
+}
+
+/*****----- Message -----*****/
+
+message {
+    border:                      0;
+    background-color:            @background-alt;
+    padding:                     1px ;
+}
+
+textbox {
+    border:                      0;
+    background-color:            inherit;
+    text-color:                  @selected;
+    vertical-align:              0.5;
+    horizontal-align:            0.0;
+}
+
+/*****----- Listview -----*****/
+listview {
+    fixed-height:                0;
+    border:                      0;
+    spacing:                     2px ;
+    scrollbar:                   false;
+    padding:                     2px 0px 0px ;
+    columns:                     7;
+    lines:                       7;
+    background-color:            @background-alt;
+    text-color:                  @foreground;
+    cursor:                      "default";
+}
+
+/*****----- Elements -----*****/
+element {
+    border:                      0px;
+    //padding:                   1px;
+    background-color:            @background;
+    text-color:                  @foreground;
+    border-radius:               5px;
+    cursor:                      pointer;
+}
+
+element-text {
+    horizontal-align:            0.5;
+    vertical-align:              0.5;
+    background-color:            inherit;
+    text-color:                  inherit;
+    cursor:                      inherit;
+}
+
+element.selected.normal {
+    border:                      1px;
+    border-color:                @selected;
+}
+
+element.selected.urgent {
+    border:                      1px;
+    border-color:                @selected;
+    text-color:                  @urgent;
+}
+
+element.selected.active {
+    border:                      1px;
+    border-color:                @selected;
+    text-color:                  @active;
+}
+
+element.normal.active, element.alternate.active {
+    text-color:                  @active;
+}
+
+element normal.urgent, element.alternate.urgent {
+    border:                      1px;
+    text-color:                  @urgent;
+}
+

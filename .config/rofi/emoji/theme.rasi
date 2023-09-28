@@ -1,0 +1,18 @@
+configuration {
+    modi:                       "drun";
+    show-icons:                 false;
+}
+
+@import                          "../list-theme.rasi"
+
+window {
+    width:                        40%;
+}
+
+mainbox {
+    children:                    [ "inputbar", "message", "listview" ];
+}
+
+entry {
+    placeholder:                 "Search Apps";
+}

@@ -1,0 +1,15 @@
+configuration {
+    modi:                       "drun";
+    display-drun:               " ";
+    show-icons:                 false;
+}
+
+@import                          "../list-theme.rasi"
+
+window {
+    width:                       80%;
+}
+
+entry {
+    placeholder:                 "Search Shortcut";
+}

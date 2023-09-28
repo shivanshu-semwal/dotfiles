@@ -1,0 +1,17 @@
+{
+	"bootstrapped": true,
+	"in_process_packages":
+	[
+	],
+	"installed_packages":
+	[
+		"Dracula Color Scheme",
+		"Gruvbox Dark",
+		"Gruvbox Material Theme",
+		"i3 wm",
+		"MarkdownEditing",
+		"One Dark Material - Theme",
+		"Package Control",
+		"Theme - One Dark",
+	],
+}

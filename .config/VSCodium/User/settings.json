@@ -1,0 +1,160 @@
+{
+    "[markdown]": {
+        "editor.defaultFormatter": "DavidAnson.vscode-markdownlint"
+    },
+    //editor config
+    "editor.mouseWheelZoom": true,
+    "editor.fontFamily": "'IosevkaTerm Nerd Font', monospace",
+    "editor.renderWhitespace": "boundary",
+    "editor.semanticHighlighting.enabled": true,
+    "editor.cursorBlinking": "phase",
+    "editor.cursorSmoothCaretAnimation": "on",
+    "editor.suggestSelection": "first",
+    "editor.unicodeHighlight.nonBasicASCII": false,
+    "editor.guides.bracketPairs": true,
+    "editor.tokenColorCustomizations": {
+        "textMateRules": [
+            {
+                "scope": "heading.1.markdown entity.name.section.markdown, heading.1.markdown punctuation.definition.heading.markdown",
+                "settings": {
+                    "foreground": "#de6a73",
+                    "fontStyle": "bold"
+                }
+            },
+            {
+                "scope": "heading.2.markdown entity.name.section.markdown, heading.2.markdown punctuation.definition.heading.markdown",
+                "settings": {
+                    "foreground": "#c678dd",
+                    "fontStyle": "bold"
+                }
+            },
+            {
+                "scope": "heading.3.markdown entity.name.section.markdown, heading.3.markdown punctuation.definition.heading.markdown",
+                "settings": {
+                    "foreground": "#98c379",
+                    "fontStyle": "bold"
+                }
+            },
+            {
+                "scope": "heading.4.markdown entity.name.section.markdown, heading.4.markdown punctuation.definition.heading.markdown",
+                "settings": {
+                    "foreground": "#e5c07a",
+                    "fontStyle": "bold"
+                }
+            }
+        ]
+    },
+    "workbench.startupEditor": "none",
+    "workbench.editor.languageDetection": false,
+    // windows config
+    "window.menuBarVisibility": "toggle",
+    "window.restoreWindows": "none",
+    // keyboard
+    "keyboard.dispatch": "keyCode",
+    "files.watcherExclude": {
+        "**/.bloop": true,
+        "**/.metals": true,
+        "**/.ammonite": true
+    },
+    // latex extension
+    "latex-workshop.view.pdf.viewer": "tab",
+    "latex-workshop.view.pdf.external.viewer.command": "zathura",
+    "latex-workshop.latex.autoBuild.run": "never",
+    // indent rainbow
+    "indentRainbow.errorColor": "rgba(141,143,148,0.0)",
+    // zenmode
+    "zenMode.fullScreen": false,
+    "zenMode.centerLayout": true,
+    "zenMode.hideLineNumbers": false,
+    // terminal
+    "terminal.integrated.enableMultiLinePasteWarning": false,
+    "terminal.explorerKind": "external",
+    "terminal.external.linuxExec": "alacritty",
+    "terminal.integrated.fontSize": 16,
+    // update
+    "update.mode": "manual",
+    // c-cpp extension microsoft
+    "C_Cpp.intelliSenseCacheSize": 1024,
+    "C_Cpp.clang_format_fallbackStyle": "{ BasedOnStyle: LLVM, UseTab: Never, IndentWidth: 4, TabWidth: 4, BreakBeforeBraces: Attach, AllowShortIfStatementsOnASingleLine: true, IndentCaseLabels: false, ColumnLimit: 0, AccessModifierOffset: -4, AllowShortLoopsOnASingleLine: true }",
+    // intellicode
+    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+    // markdown and its extension
+    "markdown.preview.fontFamily": "'Ubuntu', sans-serif",
+    "markdown.preview.fontSize": 16,
+    "markdownlint.config": {
+        "MD007": {
+            "indent": 4
+        },
+        "MD024": false,
+        "MD040": false,
+    },
+    // files
+    "files.exclude": {
+        "**/.classpath": true,
+        "**/.project": true,
+        "**/.settings": true,
+        "**/.factorypath": true
+    },
+    // python and extension
+    "python.defaultInterpreterPath": "/bin/python3",
+    "python.formatting.autopep8Args": [
+        "--ignore",
+        "E402"
+    ],
+    // python notebook
+    "notebook.lineNumbers": "on",
+    // git 
+    "git.autoRepositoryDetection": "subFolders",
+    // web development
+    "html.format.wrapLineLength": 100,
+    "[javascript]": {
+        "editor.defaultFormatter": "vscode.typescript-language-features"
+    },
+    "[css]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[jsonc]": {
+        "editor.defaultFormatter": "vscode.json-language-features"
+    },
+    "[html]": {
+        "editor.defaultFormatter": "vscode.html-language-features"
+    },
+    "[json]": {
+        "editor.defaultFormatter": "vscode.json-language-features"
+    },
+    "[django-html]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "editor.quickSuggestions": {
+            "other": true,
+            "comments": true,
+            "strings": true
+        }
+    },
+    // prettier
+    "prettier.printWidth": 100,
+    // cspell
+    "cSpell.customDictionaries": {
+        "custom-dictionary-user": {
+            "name": "custom-dictionary-user",
+            "path": "~/.cspell/custom-dictionary-user.txt",
+            "addWords": true,
+            "scope": "user"
+        }
+    },
+    "MarkdownPaste.path": "${fileDirname}/img",
+    "rewrap.wrappingColumn": 100,
+    "markdown.extension.tableFormatter.normalizeIndentation": true,
+    "clangd.path": "/home/totoro/.config/Code/User/globalStorage/llvm-vs-code-extensions.vscode-clangd/install/15.0.3/clangd_15.0.3/bin/clangd",
+    "vim.useSystemClipboard": true,
+    "markdown.extension.math.enabled": false,
+    // telemetry
+    "telemetry.telemetryLevel": "off",
+    "workbench.statusBar.visible": true,
+    "workbench.colorTheme": "One Dark Pro Darker",
+    "extensions.ignoreRecommendations": true,
+    "window.zoomLevel": 1,
+    "git.openRepositoryInParentFolders": "never",
+    // "clangd.arguments": [
+    //   "--enable-config"
+    // ]
+}

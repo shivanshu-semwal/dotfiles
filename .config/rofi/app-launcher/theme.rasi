@@ -1,0 +1,19 @@
+configuration {
+    modi:                       "drun,window,run,ssh,filebrowser";
+    display-drun:               " ";
+    display-run:                " ";
+    display-filebrowser:        " ";
+    display-window:             " ";
+    display-ssh:                " ";
+    show-icons:                 true;
+}
+
+@import                          "../list-theme.rasi"
+
+mainbox {
+    children:                    [ "inputbar", "mode-switcher", "listview" ];
+}
+
+entry {
+    placeholder:                 "Search Apps";
+}

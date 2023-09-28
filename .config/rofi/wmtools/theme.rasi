@@ -1,0 +1,25 @@
+configuration{
+    show-icons:                  false;
+}
+
+@import                          "../list-theme.rasi"
+
+window {
+    width:                        20%;
+}
+
+mainbox {
+    children:                    [ "inputbar", "message", "listview" ];
+}
+
+message, textbox {
+    text-color:                 @active;
+}
+
+entry {
+    placeholder:                 "Select action...";
+}
+
+listview {
+    lines:                      7;
+}
