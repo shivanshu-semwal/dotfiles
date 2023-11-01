@@ -2,7 +2,7 @@
 
 timer=$((60 * 1))       # 1 min in seconds
 
-wallpaper_dir="$HOME/Pictures/Wallpapers/gruvbox/dark"
+wallpaper_dir="$HOME/Pictures/Wallpapers/gruvbox/light"
 
 while true; do
     [ -f "$HOME/.wallpaper" ] && feh --bg-scale ~/.wallpaper

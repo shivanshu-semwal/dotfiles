@@ -1,0 +1,13 @@
+#!/bin/sh
+
+__type_clipboard_helper &
+
+sleep 1
+# start typing
+(xclip -selection c -o; echo "") | while read p; do
+  sleep 0.1
+  xdotool type "$p"
+  xdotool key KP_Enter
+done
+
+pkill "__type_clipboar"

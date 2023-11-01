@@ -1,7 +1,7 @@
 #!/bin/bash
 [ -f "$HOME/.dmenurc" ] && . $HOME/.dmenurc || DMENU='dmenu -i'
 # Defining the text editor to use.
-DMEDITOR="subl"
+DMEDITOR="code"
 # function to check if an element is inside an array
 containsElement() {
   local e match="$1"
@@ -19,10 +19,10 @@ declare -a options=(
   "compton - $HOME/.config/compton.conf"
   "code - $HOME/.config/Code/User"
   "dunst - $HOME/.config/dunst"
-  "i3 - $HOME/.config/i3/config"
+  "i3 - $HOME/.config/i3"
   "neovim - $HOME/.config/nvim"
   "openbox - $HOME/.config/openbox"
-  "palette - $HOME/Scripts/dmenu/src/palette"
+  "palette - $HOME/Scripts/palette"
   "picom - $HOME/.config/picom/picom.conf"
   "polybar - $HOME/.config/polybar"
   "qtile - $HOME/.config/qtile"

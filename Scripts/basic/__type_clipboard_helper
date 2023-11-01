@@ -1,0 +1,22 @@
+#!/bin/bash
+sleep 1
+process_name="type-clipboard"
+
+mouse_moved() {
+    current_coords=$(xdotool getmouselocation --shell)
+    if [ "$current_coords" != "$previous_coords" ]; then
+        return 0
+    else
+        return 1
+    fi
+}
+
+previous_coords=$(xdotool getmouselocation --shell)
+
+while true; do
+    if mouse_moved; then
+        pkill "$process_name"
+        pkill "__type_clipboar"
+    fi
+    sleep 0.1
+done
