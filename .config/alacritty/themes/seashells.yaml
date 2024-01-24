@@ -1,21 +1,13 @@
-# Colors (SeaShells)
-# Source : https://raw.githubusercontent.com/mbadolato/iTerm2-Color-Schemes/master/schemes/SeaShells.itermcolors
 colors:
-  # Default colors
   primary:
     background: '#061923'
     foreground: '#e5c49e'
-
-  # Colors the cursor will use if `custom_cursor_colors` is true
   cursor:
     text: '#061822'
     cursor: '#feaf3c'
-
   selection:
     text: '#ffe9d7'
     background: '#265b75'
-
-  # Normal colors
   normal:
     black: '#1d485f'
     red: '#db662d'
@@ -25,8 +17,6 @@ colors:
     magenta: '#77dbf4'
     cyan: '#5fb1c2'
     white: '#e5c49e'
-
-  # Bright colors
   bright:
     black: '#545d65'
     red: '#dd998a'

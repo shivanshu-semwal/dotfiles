@@ -1,29 +1,22 @@
-
-# Colors (Konsole's Dark Pastels)
 colors:
-  # Default colors
   primary:
-    background: '0x2C2C2C'
-    foreground: '0xDCDCCC'
-
-  # Normal colors
+    background: '#2C2C2C'
+    foreground: '#DCDCCC'
   normal:
-    black:   '0x3F3F3F'
-    red:     '0x705050'
-    green:   '0x60B48A'
-    yellow:  '0xDFAF8F'
-    blue:    '0x9AB8D7'
-    magenta: '0xDC8CC3'
-    cyan:    '0x8CD0D3'
-    white:   '0xDCDCCC'
-
-  # Bright colors
+    black: '#3F3F3F'
+    red: '#705050'
+    green: '#60B48A'
+    yellow: '#DFAF8F'
+    blue: '#9AB8D7'
+    magenta: '#DC8CC3'
+    cyan: '#8CD0D3'
+    white: '#DCDCCC'
   bright:
-    black:   '0x709080'
-    red:     '0xDCA3A3'
-    green:   '0x72D5A3'
-    yellow:  '0xF0DFAF'
-    blue:    '0x94BFF3'
-    magenta: '0xEC93D3'
-    cyan:    '0x93E0E3'
-    white:   '0xFFFFFF'
+    black: '#709080'
+    red: '#DCA3A3'
+    green: '#72D5A3'
+    yellow: '#F0DFAF'
+    blue: '#94BFF3'
+    magenta: '#EC93D3'
+    cyan: '#93E0E3'
+    white: '#FFFFFF'

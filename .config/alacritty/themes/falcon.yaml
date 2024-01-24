@@ -1,34 +1,25 @@
-# falcon colorscheme for alacritty
-# by fenetikm, https://github.com/fenetikm/falcon
 colors:
-  # Default colors
   primary:
-    background: '0x020221'
-    foreground: '0xb4b4b9'
-
-  # Colors the cursor will use if `custom_cursor_colors` is true
+    background: '#020221'
+    foreground: '#b4b4b9'
   cursor:
-    text: '0x020221'
-    cursor: '0xffe8c0'
-
-  # Normal colors
+    text: '#020221'
+    cursor: '#ffe8c0'
   normal:
-    black:   '0x000004'
-    red:     '0xff3600'
-    green:   '0x718e3f'
-    yellow:  '0xffc552'
-    blue:    '0x635196'
-    magenta: '0xff761a'
-    cyan:    '0x34bfa4'
-    white:   '0xb4b4b9'
-
-  # Bright colors
+    black: '#000004'
+    red: '#ff3600'
+    green: '#718e3f'
+    yellow: '#ffc552'
+    blue: '#635196'
+    magenta: '#ff761a'
+    cyan: '#34bfa4'
+    white: '#b4b4b9'
   bright:
-    black:   '0x020221'
-    red:     '0xff8e78'
-    green:   '0xb1bf75'
-    yellow:  '0xffd392'
-    blue:    '0x99a4bc'
-    magenta: '0xffb07b'
-    cyan:    '0x8bccbf'
-    white:   '0xf8f8ff'
+    black: '#020221'
+    red: '#ff8e78'
+    green: '#b1bf75'
+    yellow: '#ffd392'
+    blue: '#99a4bc'
+    magenta: '#ffb07b'
+    cyan: '#8bccbf'
+    white: '#f8f8ff'

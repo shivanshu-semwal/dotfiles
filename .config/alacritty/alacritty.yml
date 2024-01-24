@@ -1,5 +1,5 @@
 import:
-  - /home/totoro/.config/alacritty/themes/gruvbox_dark_hard.yaml
+  - /home/totoro/.config/alacritty/themes/alacritty_0_12.yaml
 
 # Any items in the `env` entry below will be added as
 # environment variables. Some entries may override variables
@@ -53,7 +53,7 @@ font:
   bold_italic:
     family: IosevkaTerm Nerd Font
     style: Bold Italic
-  size: 11.0
+  size: 18.0
 
   offset:
     x: 0

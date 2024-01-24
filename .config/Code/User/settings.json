@@ -46,7 +46,6 @@
     "workbench.startupEditor": "none",
     "workbench.editor.languageDetection": false,
     "workbench.statusBar.visible": true,
-    "workbench.colorTheme": "Gruvbox Dark Hard",
     // windows config
     "window.menuBarVisibility": "toggle",
     "window.restoreWindows": "none",
@@ -152,6 +151,9 @@
     "[markdown]": {
         "editor.defaultFormatter": "DavidAnson.vscode-markdownlint",
     },
+    "[lisp]": {
+        "editor.bracketPairColorization.enabled": false,
+    },
     "git.openRepositoryInParentFolders": "never",
-    "window.zoomLevel": 1,
+    "editor.minimap.enabled": false,
 }

@@ -1,28 +1,22 @@
-# Colors (Oceanic Next)
 colors:
-  # Default colors
   primary:
-    background: '0x1b2b34'
-    foreground: '0xd8dee9'
-
-  # Normal colors
+    background: '#1b2b34'
+    foreground: '#d8dee9'
   normal:
-    black:   '0x29414f'
-    red:     '0xec5f67'
-    green:   '0x99c794'
-    yellow:  '0xfac863'
-    blue:    '0x6699cc'
-    magenta: '0xc594c5'
-    cyan:    '0x5fb3b3'
-    white:   '0x65737e'
-
-  # Bright colors
+    black: '#29414f'
+    red: '#ec5f67'
+    green: '#99c794'
+    yellow: '#fac863'
+    blue: '#6699cc'
+    magenta: '#c594c5'
+    cyan: '#5fb3b3'
+    white: '#65737e'
   bright:
-    black:   '0x405860'
-    red:     '0xec5f67'
-    green:   '0x99c794'
-    yellow:  '0xfac863'
-    blue:    '0x6699cc'
-    magenta: '0xc594c5'
-    cyan:    '0x5fb3b3'
-    white:   '0xadb5c0'
+    black: '#405860'
+    red: '#ec5f67'
+    green: '#99c794'
+    yellow: '#fac863'
+    blue: '#6699cc'
+    magenta: '#c594c5'
+    cyan: '#5fb3b3'
+    white: '#adb5c0'

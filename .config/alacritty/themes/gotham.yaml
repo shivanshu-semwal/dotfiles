@@ -1,28 +1,22 @@
-# Colors (Gotham)
 colors:
-  # Default colors
   primary:
-    background: '0x0a0f14'
-    foreground: '0x98d1ce'
-
-  # Normal colors
+    background: '#0a0f14'
+    foreground: '#98d1ce'
   normal:
-    black: '0x0a0f14'
-    red: '0xc33027'
-    green: '0x26a98b'
-    yellow: '0xedb54b'
-    blue: '0x195465'
-    magenta: '0x4e5165'
-    cyan: '0x33859d'
-    white: '0x98d1ce'
-
-  # Bright colors
+    black: '#0a0f14'
+    red: '#c33027'
+    green: '#26a98b'
+    yellow: '#edb54b'
+    blue: '#195465'
+    magenta: '#4e5165'
+    cyan: '#33859d'
+    white: '#98d1ce'
   bright:
-    black: '0x10151b'
-    red: '0xd26939'
-    green: '0x081f2d'
-    yellow: '0x245361'
-    blue: '0x093748'
-    magenta: '0x888ba5'
-    cyan: '0x599caa'
-    white: '0xd3ebe9'
+    black: '#10151b'
+    red: '#d26939'
+    green: '#081f2d'
+    yellow: '#245361'
+    blue: '#093748'
+    magenta: '#888ba5'
+    cyan: '#599caa'
+    white: '#d3ebe9'

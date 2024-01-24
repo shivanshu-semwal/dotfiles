@@ -1,28 +1,22 @@
-# Colors (Wombat)
 colors:
-  # Default colors
   primary:
-    background: '0x1f1f1f'
-    foreground: '0xe5e1d8'
-
-  # Normal colors
+    background: '#1f1f1f'
+    foreground: '#e5e1d8'
   normal:
-    black:   '0x000000'
-    red:     '0xf7786d'
-    green:   '0xbde97c'
-    yellow:  '0xefdfac'
-    blue:    '0x6ebaf8'
-    magenta: '0xef88ff'
-    cyan:    '0x90fdf8'
-    white:   '0xe5e1d8'
-
-  # Bright colors
+    black: '#000000'
+    red: '#f7786d'
+    green: '#bde97c'
+    yellow: '#efdfac'
+    blue: '#6ebaf8'
+    magenta: '#ef88ff'
+    cyan: '#90fdf8'
+    white: '#e5e1d8'
   bright:
-    black:   '0xb4b4b4'
-    red:     '0xf99f92'
-    green:   '0xe3f7a1'
-    yellow:  '0xf2e9bf'
-    blue:    '0xb3d2ff'
-    magenta: '0xe5bdff'
-    cyan:    '0xc2fefa'
-    white:   '0xffffff'
+    black: '#b4b4b4'
+    red: '#f99f92'
+    green: '#e3f7a1'
+    yellow: '#f2e9bf'
+    blue: '#b3d2ff'
+    magenta: '#e5bdff'
+    cyan: '#c2fefa'
+    white: '#ffffff'
