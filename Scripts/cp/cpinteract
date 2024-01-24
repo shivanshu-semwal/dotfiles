@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-#Replace the first string with the path to runner.py!
-cp ~/vimcp/Library/runner.py runner.py
+# Replace the first string with the path to runner.py!
+# cp ~/vimcp/Library/runner.py runner.py
 
 for ((testNum = 0; testNum < $3; testNum++)); do
     python3 runner.py \

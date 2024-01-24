@@ -1,9 +1,12 @@
 #!/bin/bash
-[ -f "$HOME/.dmenurc" ] && . $HOME/.dmenurc || DMENU='dmenu -i'
+
+CONFIG="$HOME/Scripts/dmenu/config"
+[ -f "$CONFIG" ] && . $CONFIG || DMENU='dmenu -i'
+
 BOOK_DIR="/media/totoro/Data/eBooks/"
 if [ ! -d $BOOK_DIR ]; then
-	echo "Drive not mounted. / Folder dosen't exists" | eval "$DMENU -p 'ERROR :-('"
+    echo "Drive not mounted. / Folder dosen't exists" | eval "$DMENU -p 'ERROR :-('"
 else
-	var1=$(find $BOOK_DIR -type f -name "*.pdf" | sed "s+$BOOK_DIR++" | eval "$DMENU -p ''")
-	[ -n "$var1" ] && zathura "$BOOK_DIR/$var1" # open book
+    var1=$(find $BOOK_DIR -type f -name "*.pdf" | sed "s+$BOOK_DIR++" | eval "$DMENU -p ''")
+    [ -n "$var1" ] && zathura "$BOOK_DIR/$var1" # open book
 fi

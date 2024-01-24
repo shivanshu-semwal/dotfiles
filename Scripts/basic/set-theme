@@ -1,0 +1,60 @@
+#!/bin/bash
+
+# Check if an argument is provided
+if [ $# -ne 1 ]; then
+  echo "Usage: $0 <light|dark>"
+  exit 1
+fi
+
+# Get the argument
+theme=$1
+
+# Check if the argument is "light" or "dark" and perform actions accordingly
+if [ "$theme" = "light" ]; then
+  echo "Setting light theme..."
+
+  # gtk
+  gsettings set org.gnome.desktop.interface color-scheme 'default'
+  gsettings set org.gnome.desktop.interface icon-theme 'ePapirus'
+
+  gnome-extensions enable lightshell@dikasp.gitlab
+
+  # qt
+  cp "$HOME/.config/qt5ct/light.conf" "$HOME/.config/qt5ct/qt5ct.conf"
+
+  # terminal
+  alacritty-conf -c atom_one_light
+
+  # wallpaper using variety
+  variety --set-option icon Dark --set-option lightness_mode 1
+  variety --next
+
+elif [ "$theme" = "dark" ]; then
+  echo "Setting dark theme..."
+
+  gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
+  gsettings set org.gnome.desktop.interface icon-theme 'ePapirus-Dark'
+
+  gnome-extensions disable lightshell@dikasp.gitlab
+
+  # qt
+  cp "$HOME/.config/qt5ct/dark.conf" "$HOME/.config/qt5ct/qt5ct.conf"
+
+  # terminal
+  alacritty-conf -c alacritty_0_12
+
+  # wallpaper using variety
+  variety --set-option icon Light --set-option lightness_mode 0
+  variety --next
+
+else
+  echo "Invalid argument. Usage: $0 <light|dark>"
+  exit 1
+fi
+
+echo "Theme customization complete."
+
+# Help
+#
+# changing theme in gnome
+# gsettings set org.gnome.desktop.interface gtk-theme 'adw-gtk3-dark'

@@ -1,5 +1,8 @@
 #!/bin/bash
-[ -f "$HOME/.dmenurc" ] && . $HOME/.dmenurc || DMENU='dmenu -i'
+
+CONFIG="$HOME/Scripts/dmenu/config"
+[ -f "$CONFIG" ] && . $CONFIG || DMENU='dmenu -i'
+
 SONG_DIR="/media/totoro/Data/Music/SoundTracks/"
 
 LOCATION="/media/totoro/Data/eBooks/formal-science/computer-science/cheat-sheets"

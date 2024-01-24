@@ -9,14 +9,14 @@ DISPLAY2=$(xrandr -q | grep -oE "^eDP.* connected" | cut -d' ' -f1)
 
 t=$(xrandr --listproviders | awk '/^Providers/ {print $4}')
 if [ "$t" = "2" ]; then
-	echo "Setting multiple monitor setup."
-	if [ "$1" = "--other" ]; then
-		xrandr \
-			--output "$DISPLAY2" --mode 1920x1080 --pos 0x0 --rotate normal \
-			--output "$DISPLAY1" --mode 1920x1080 --pos 1920x0 --rotate normal
-	else
-		xrandr \
-			--output "$DISPLAY1" --mode 1920x1080 --pos 0x0 --rotate normal \
-			--output "$DISPLAY2" --mode 1920x1080 --pos 1920x0 --rotate normal
-	fi
+    echo "Setting multiple monitor setup."
+    if [ "$1" = "--other" ]; then
+        xrandr \
+            --output "$DISPLAY2" --mode 1920x1080 --pos 0x0 --rotate normal \
+            --output "$DISPLAY1" --mode 1920x1080 --pos 1920x0 --rotate normal
+    else
+        xrandr \
+            --output "$DISPLAY1" --mode 1920x1080 --pos 0x0 --rotate normal \
+            --output "$DISPLAY2" --mode 1920x1080 --pos 1920x0 --rotate normal
+    fi
 fi

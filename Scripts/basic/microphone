@@ -2,7 +2,7 @@
 
 # Use: Toggle the status of the default active mic source for pulseaudio
 # Dependencies: pactl, dunstify
-# Description:
+# Description: mute, unmute active microphone
 # Working:
 # Author: Shivanshu
 

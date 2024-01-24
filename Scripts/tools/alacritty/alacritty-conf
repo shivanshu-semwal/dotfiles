@@ -113,6 +113,9 @@ if [ -n "$COLOR" ]; then
     elif [ -f "$THEME_DIR/$COLOR.yaml" ]; then
         echo "Color scheme exists. Applying..."
         set_color "$COLOR.yaml"
+    elif [ -f "$THEME_DIR/$COLOR.toml" ]; then
+        echo "Color scheme exists. Applying..."
+        set_color "$COLOR.toml"
     else
         echo "Color scheme dosen't exists."
     fi

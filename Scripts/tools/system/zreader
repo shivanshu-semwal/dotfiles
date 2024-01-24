@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Description: Open doc and ppt as pdf
+#   converts them to pdf usign libreoffice, and maintains there cache
+
 # default variables
 zadir="$HOME"'/.cache/zaread/'
 reader="zathura"

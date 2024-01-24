@@ -1,5 +1,7 @@
 #!/bin/bash
-[ -f "$HOME/.dmenurc" ] && . $HOME/.dmenurc || DMENU='dmenu -i'
+
+CONFIG="$HOME/Scripts/dmenu/config"
+[ -f "$CONFIG" ] && . $CONFIG || DMENU='dmenu -i'
 
 CODE="/media/totoro/Data/Programming"
 NOTES="/media/totoro/Data/Documents"

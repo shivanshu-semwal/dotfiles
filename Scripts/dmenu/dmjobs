@@ -3,8 +3,9 @@
 # Use: Shows saved bookmarks for Firefox Browser
 # Dependencies: dmenu and ./src/bookmarks.py
 
-# configuration
-[ -f "$HOME/.dmenurc" ] && . $HOME/.dmenurc || DMENU='dmenu -i'
+CONFIG="$HOME/Scripts/dmenu/config"
+[ -f "$CONFIG" ] && . $CONFIG || DMENU='dmenu -i'
+
 FILE="/media/totoro/Data/Documents/pnotes/notes/jobs/companies-list.md"
 LINKS=""
 

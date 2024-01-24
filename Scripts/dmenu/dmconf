@@ -1,5 +1,8 @@
 #!/bin/bash
-[ -f "$HOME/.dmenurc" ] && . $HOME/.dmenurc || DMENU='dmenu -i'
+
+CONFIG="$HOME/Scripts/dmenu/config"
+[ -f "$CONFIG" ] && . $CONFIG || DMENU='dmenu -i'
+
 # Defining the text editor to use.
 DMEDITOR="code"
 # function to check if an element is inside an array

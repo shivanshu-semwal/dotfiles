@@ -1,9 +1,12 @@
 #!/bin/bash
-[ -f "$HOME/.dmenurc" ] && . $HOME/.dmenurc || DMENU='dmenu -i'
+
+CONFIG="$HOME/Scripts/dmenu/config"
+[ -f "$CONFIG" ] && . $CONFIG || DMENU='dmenu -i'
+
 RECENT_DIR="$HOME/.local/share/RecentDocuments"
 if [ ! -d $RECENT_DIR ]; then
-	echo "Drive not mounted. / Folder dosen't exists" | eval "$DMENU -p 'ERROR :-('"
+    echo "Drive not mounted. / Folder dosen't exists" | eval "$DMENU -p 'ERROR :-('"
 else
-	var1=$(ls -1 $RECENT_DIR | eval "$DMENU -p '  '")
-	[ -n "$var1" ] && kioclient5 exec "$RECENT_DIR/$var1" # open book
+    var1=$(ls -1 $RECENT_DIR | eval "$DMENU -p '  '")
+    [ -n "$var1" ] && kioclient5 exec "$RECENT_DIR/$var1" # open book
 fi 
