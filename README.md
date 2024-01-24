@@ -1,12 +1,6 @@
-# shivu dotfiles
+# linux dotfiles
 
 > For backup purposes. Create you own copy(fork if you use github), as I'm constantly updating these.
-
-```
-░█▀▀░█░█░▀█▀░█░█░█░█░░░█▀▄░█▀█░▀█▀░█▀▀░▀█▀░█░░░█▀▀░█▀▀
-░▀▀█░█▀█░░█░░▀▄▀░█░█░░░█░█░█░█░░█░░█▀▀░░█░░█░░░█▀▀░▀▀█
-░▀▀▀░▀░▀░▀▀▀░░▀░░▀▀▀░░░▀▀░░▀▀▀░░▀░░▀░░░▀▀▀░▀▀▀░▀▀▀░▀▀▀
-```
 
 ## Screenshots
 
