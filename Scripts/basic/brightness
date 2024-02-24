@@ -8,8 +8,11 @@
 #  read about it on archwiki(backlight)
 # Author: totoro
 
-CUR_BRI=$(cat /sys/class/backlight/intel_backlight/brightness)
-MAX_BRI=$(cat /sys/class/backlight/intel_backlight/max_brightness)
+BRIGHTNESS_FILE="/sys/class/backlight/intel_backlight/brightness"
+MAX_BRIGHTNESS_FILE="/sys/class/backlight/intel_backlight/max_brightness"
+
+CUR_BRI=$(cat "$BRIGHTNESS_FILE")
+MAX_BRI=$(cat "$MAX_BRIGHTNESS_FILE")
 
 # calculating 5 percent of max-brightness
 ((STEP = MAX_BRI * 5 / 100))
@@ -18,11 +21,11 @@ case $1 in
 -inc)
     ((NEW_BRI = CUR_BRI + STEP))
     if ((NEW_BRI < MAX_BRI)); then
-        echo $NEW_BRI | tee /sys/class/backlight/intel_backlight/brightness
+        echo $NEW_BRI | tee "$BRIGHTNESS_FILE"
         ((NEW_PER = NEW_BRI * 100 / MAX_BRI))
         dunstify -a "Brightness" "Brightness" "Increase \nBrightness: " -h int:value:$NEW_PER -r 100 -i brightness-systray
     else
-        echo $MAX_BRI | tee /sys/class/backlight/intel_backlight/brightness
+        echo $MAX_BRI | tee "$BRIGHTNESS_FILE"
         dunstify -a "Brightness" "Brightness" "Increase \nBrightness: " -h int:value:100 -r 100 -i brightness-systray
     fi
     ;;
@@ -31,9 +34,9 @@ case $1 in
     ((MIN_BRI = MAX_BRI * 10 / 100))
     ((NEW_BRI = CUR_BRI - STEP))
     if ((NEW_BRI > MIN_BRI)); then
-        echo $NEW_BRI | tee /sys/class/backlight/intel_backlight/brightness
+        echo $NEW_BRI | tee "$BRIGHTNESS_FILE"
     else
-        echo $MIN_BRI | tee /sys/class/backlight/intel_backlight/brightness
+        echo $MIN_BRI | tee "$BRIGHTNESS_FILE"
     fi
     ((NEW_PER = NEW_BRI * 100 / MAX_BRI))
     dunstify -a "Brightness" "Brightness" "Decrease \nBrightness: " -h int:value:$NEW_PER -r 100 -i brightness-systray

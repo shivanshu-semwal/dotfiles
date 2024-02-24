@@ -49,6 +49,7 @@
     // windows config
     "window.menuBarVisibility": "toggle",
     "window.restoreWindows": "none",
+    "window.autoDetectColorScheme": true,
     // keyboard
     "keyboard.dispatch": "keyCode",
     // zenmode
@@ -119,7 +120,7 @@
     //   "--enable-config"
     // ]
     "clangd.path": "/home/totoro/.config/Code/User/globalStorage/llvm-vs-code-extensions.vscode-clangd/install/15.0.3/clangd_15.0.3/bin/clangd",
-        // prettier
+    // prettier
     "prettier.printWidth": 100,
     "rewrap.wrappingColumn": 100,
     // vim extension
@@ -156,4 +157,6 @@
     },
     "git.openRepositoryInParentFolders": "never",
     "editor.minimap.enabled": false,
+    "window.zoomLevel": 1,
+    "workbench.colorTheme": "Default Light Modern",
 }

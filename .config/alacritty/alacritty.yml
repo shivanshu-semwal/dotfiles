@@ -1,5 +1,5 @@
 import:
-  - /home/totoro/.config/alacritty/themes/alacritty_0_12.yaml
+  - /home/totoro/.config/alacritty/themes/atom_one_light.yaml
 
 # Any items in the `env` entry below will be added as
 # environment variables. Some entries may override variables

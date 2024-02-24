@@ -1,9 +1,7 @@
 #!/bin/bash
 
-# Use: Toggle the status of the default active mic source for pulseaudio
+# Use: Toggle the status of the default active mic source for *pulseaudio*
 # Dependencies: pactl, dunstify
-# Description: mute, unmute active microphone
-# Working:
 # Author: Shivanshu
 
 # Get active audio source index
