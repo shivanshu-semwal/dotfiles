@@ -6,8 +6,24 @@
 
 - `User` directory contains the configuration
 
-### Themes UI
+## Configuration
 
-- indent rainbow
-    - <https://github.com/oderwat/vscode-indent-rainbow>
-
+```json
+{
+    // Configure glob patterns for excluding files and folders. 
+    // For example, the File Explorer decides which files and folders to show or hide based on this setting.
+    "files.exclude": {
+        "**/.classpath": true,
+        "**/.project": true,
+        "**/.settings": true,
+        "**/.factorypath": true
+    },
+    // Configure paths or glob patterns to exclude from file watching.
+    // Paths can either be relative to the watched folder or absolute.
+    "files.watcherExclude": {
+        "**/.bloop": true,
+        "**/.metals": true,
+        "**/.ammonite": true
+    },
+}
+```

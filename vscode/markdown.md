@@ -45,6 +45,9 @@
     </details>
 - Markdown Linter <https://github.com/DavidAnson/vscode-markdownlint>
     ```json
+    "[markdown]": {
+        "editor.defaultFormatter": "DavidAnson.vscode-markdownlint",
+    },
     {
         "markdownlint.config": {
             "MD007": {

@@ -1,5 +1,5 @@
 import:
-  - /home/totoro/.config/alacritty/themes/atom_one_light.yaml
+  - /home/totoro/.config/alacritty/themes/alacritty_0_12.yaml
 
 # Any items in the `env` entry below will be added as
 # environment variables. Some entries may override variables
@@ -312,3 +312,4 @@ key_bindings:
   - { key: PageDown,  mods: None,          action: ScrollPageDown, mode: ~Alt  }
   - { key: Home,      mods: Shift,         action: ScrollToTop,    mode: ~Alt  }
   - { key: End,       mods: Shift,         action: ScrollToBottom, mode: ~Alt  }
+  - { key: N,         mods: Control,       action: SpawnNewInstance            }
