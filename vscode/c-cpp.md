@@ -5,18 +5,7 @@
 ```json
 {
    "C_Cpp.intelliSenseCacheSize": 1024,
-    "C_Cpp.clang_format_fallbackStyle": "{ 
-      BasedOnStyle: LLVM, 
-      UseTab: Never, 
-      IndentWidth: 4, 
-      TabWidth: 4, 
-      BreakBeforeBraces: Attach, 
-      AllowShortIfStatementsOnASingleLine: true, 
-      IndentCaseLabels: false, 
-      ColumnLimit: 0, 
-      AccessModifierOffset: -4, 
-      AllowShortLoopsOnASingleLine: true 
-    }",
+    "C_Cpp.clang_format_fallbackStyle": "{ BasedOnStyle: LLVM, UseTab: Never, IndentWidth: 4, TabWidth: 4, BreakBeforeBraces: Attach, AllowShortIfStatementsOnASingleLine: true, IndentCaseLabels: false, ColumnLimit: 0, AccessModifierOffset: -4, AllowShortLoopsOnASingleLine: true }",
 }
 ```
 

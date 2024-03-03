@@ -1,0 +1,170 @@
+{
+	// https://code.visualstudio.com/docs/editor/userdefinedsnippets
+	// prefix - what you have to serach snipped by
+	// $1, $2 tab stops
+	// $0 final cursor postion
+	// ${1:label} default values
+	"header": {
+		"prefix": "header",
+		"body": [
+			"#include <bits/stdc++.h>",
+			"using namespace std;",
+			""
+		],
+		"description": "cp template"
+	},
+	"competitive programming basic": {
+		"prefix": "cp",
+		"body": [
+			"#include <bits/stdc++.h>",
+			"using namespace std;",
+			"",
+			"int main(){",
+			"\t$1",
+			"\treturn 0;",
+			"}"
+		],
+		"description": "cp template"
+	},
+	"leetcode competitive programming": {
+		"prefix": "leetcode",
+		"body": [
+			"int main(){",
+			"\tSolution s;",
+			"\ts$1",
+			"\treturn 0;",
+			"}"
+		],
+		"description": "cp template"
+	},
+	"cp tree": {
+		"prefix": "cptree",
+		"body": [
+			"struct node {",
+			"\tint val;",
+			"\tnode *right;",
+			"\tnode *left;",
+			"\tnode(): val(0), left(nullptr), right(nullptr) {};",
+			"\tnode(int x): val(x), left(nullptr), right(nullptr) {};",
+			"\tnode(int x, node* xx): val(x), left(xx), right(xx) {};",
+			"\tnode(int x, node *l, node *r): val(x), left(l), right(r) {};",
+			"};"
+		],
+		"description": "cp template"
+	},
+	"for": {
+		"prefix": "for",
+		"body": [
+			"for (${1:size_t} ${2:i} = 0; $2 < ${3:count}; $2++) {",
+			"\t${4:/* code */}",
+			"}",
+		],
+		"description": "Main function"
+	},
+	"main": {
+		"prefix": "main",
+		"body": [
+			"int main() {",
+			"\t$1",
+			"\treturn 0;",
+			"}"
+		]
+	},
+	"headers": {
+		"prefix": "headers",
+		"body": [
+			"#include <iostream>",
+			"#include <algorithm>",
+			"#include <vector>",
+			"",
+			"using namespace std;\n"
+		]
+	},
+	"upper case": {
+		"prefix": "upper_case",
+		"body": [
+			"transform($1.begin(), $1.end(), $1.begin(), ::toupper)"
+		],
+		"description": "Convert string to uppercase."
+	},
+	"lower case": {
+		"prefix": "lower_case",
+		"body": [
+			"transform($1.begin(), $1.end(), $1.begin(), ::tolower)"
+		],
+		"description": "Convert string to lowercase."
+	},
+	"debug-print": {
+		"prefix": "debug",
+		"body": [
+			"void print(const int& x) { cout << x; }",
+			"void print(const long& x) { cout << x; }",
+			"void print(const bool& x) { cout << (x ? \"true\" : \"false\"); }",
+			"void print(const long long& x) { cout << x; }",
+			"void print(const unsigned& x) { cout << x; }",
+			"void print(const unsigned long& x) { cout << x; }",
+			"void print(const unsigned long long& x) { cout << x; }",
+			"void print(const float& x) { cout << x; }",
+			"void print(const double& x) { cout << x; }",
+			"void print(const long double& x) { cout << x; }",
+			"void print(const char& x) { cout << (char)44 << x << (char)44; }",
+			"void print(const char* x) { cout << (char)34 << x << (char)34; }",
+			"void print(const string& x) { cout << (char)34 << x << (char)34; }",
+			"template <typename T, typename V>",
+			"void print(const pair<T, V>& x);",
+			"template <typename T>",
+			"void print(const vector<T>& x);",
+			"template <typename T>",
+			"void print(const T& x);",
+			"template <typename T, typename V>",
+			"void print(const pair<T, V>& x) {",
+			"\tcout << '{';",
+			"\tprint(x.first);",
+			"\tcout << ',';",
+			"\tprint(x.second);",
+			"\tcout << \"}\";",
+			"}",
+			"template <typename T, typename V, typename U>",
+			"void print(const tuple<T, V, U>& x) {",
+			"\tcout << '{';",
+			"\tprint(get<0>(x));",
+			"\tcout << ',';",
+			"\tprint(get<1>(x));",
+			"\tcout << ',';",
+			"\tprint(get<2>(x));",
+			"\tcout << \"}\";",
+			"}",
+			"template <typename T>",
+			"void print(const vector<T>& x) {",
+			"\tcout << \"{\";",
+			"\tfor (int i = 0; i < x.size(); i++) {",
+			"\t  print(x[i]);",
+			"\t  cout << (x.size() - i - 1 ? \",\" : \"\");",
+			"\t};",
+			"\tcout << \"}\";",
+			"}",
+			"template <typename T>",
+			"void print(const T& x) {",
+			"\tint f = 0;",
+			"\tcout << '{';",
+			"\tfor (auto& i : x) cout << (f++ ? \",\" : \"\"), print(i);",
+			"\tcout << \"}\";",
+			"}",
+			"void dprint() { cout << \"]\\n\"; }",
+			"template <typename T, typename... V>",
+			"void dprint(T t, V... v) {",
+			"\tprint(t);",
+			"\tif (sizeof...(v)) cout << \", \";",
+			"\tdprint(v...);",
+			"}",
+			"#ifndef ONLINE_JUDGE",
+			"#define debug(x...)             \\",
+			"\tcout << \"[\" << #x << \"] = [\"; \\",
+			"\tdprint(x)",
+			"#else",
+			"#define debug(x...)",
+			"#endif",
+		],
+		"description": "for printing values"
+	}
+}

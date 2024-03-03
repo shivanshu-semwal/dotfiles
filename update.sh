@@ -27,7 +27,7 @@ update_app() {
 
 declare -a config=("fontconfig" "libinput-gestures.conf" "mpv" "starship.toml" "zathura")
 declare -a i3=("i3" "dunst" "rofi" "polybar" "picom")
-declare -a code=("snippets" "keybindings.json" "settings.json")
+declare -a code=("snippets" "keybindings.json" "settings.json" "profiles")
 declare -a codium=("snippets" "keybindings.json" "settings.json")
 declare -a vim=("autoload" "bitmaps" "vimrc")
 declare -a sublime=("User")

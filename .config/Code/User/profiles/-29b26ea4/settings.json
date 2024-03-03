@@ -1,0 +1,38 @@
+{
+  //editor config
+  "editor.mouseWheelZoom": true,
+  "editor.fontFamily": "'IosevkaTerm Nerd Font', monospace",
+  "editor.renderWhitespace": "boundary",
+  "editor.semanticHighlighting.enabled": true,
+  "editor.cursorBlinking": "phase",
+  "editor.cursorSmoothCaretAnimation": "on",
+  "editor.suggestSelection": "first",
+  "editor.unicodeHighlight.nonBasicASCII": false,
+  "editor.guides.bracketPairs": true,
+  "editor.minimap.enabled": false,
+  // workbench
+  "workbench.startupEditor": "none",
+  "workbench.editor.languageDetection": false,
+  "workbench.statusBar.visible": true,
+  // windows config
+  "window.autoDetectColorScheme": true,
+  "window.zoomLevel": 1,
+  // zenmode
+  "zenMode.fullScreen": false,
+  "zenMode.centerLayout": true,
+  "zenMode.hideLineNumbers": false,
+  // terminal
+  "terminal.integrated.enableMultiLinePasteWarning": "auto",
+  "terminal.explorerKind": "external",
+  "terminal.integrated.fontSize": 16,
+  // git
+  "git.autoRepositoryDetection": "subFolders",
+  "git.openRepositoryInParentFolders": "never",
+  // extensions
+  "extensions.ignoreRecommendations": true,
+
+  // PROFILE JS
+  "workbench.iconTheme": "material-icon-theme",
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "eslint.run": "onSave"
+}
