@@ -2,7 +2,11 @@
 
 import io, json, pathlib as p
 
-file_glob="*.default-release-1/sessionstore-backups/recovery.js*"
+# file glob if you are using the latest release version of firefox
+# file_glob="*.default-release-1/sessionstore-backups/recovery.js*"
+
+# file glob if you are using the esr release version of firefox
+file_glob="*.default-esr/sessionstore-backups/recovery.js*"
 
 fpath = None
 for i in p.Path("~/.mozilla/firefox").expanduser().glob(file_glob):

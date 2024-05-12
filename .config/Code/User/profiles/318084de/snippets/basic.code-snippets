@@ -1,0 +1,14 @@
+{
+	"Print Basic Header": {
+		"scope": "shellscript",
+		"prefix": "head",
+		"body": [
+			"# Use: $1",
+			"# Dependencies: $2",
+			"# Description: $3",
+			"# Working: $4",
+			"# Author: $5"
+		],
+		"description": "Basic template for shell scripts"
+	}
+}

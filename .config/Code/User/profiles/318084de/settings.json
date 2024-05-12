@@ -44,5 +44,6 @@
     // tab
     "[markdown]": {
         "editor.tabSize": 4
-    }
+    },
+    "workbench.colorTheme": "Default Light Modern"
 }
