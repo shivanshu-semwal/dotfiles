@@ -1,3 +1,7 @@
+get-tabs(){
+    strings $HOME/.config/google-chrome/Default/Sessions/Session_* | grep -E '^https?://' | sed 's|/$||g' | sort | uniq | grep -v 'google.com'
+}
+
 bookmarks(){
     grep -i "$1" $HOME/Documents/todo/bookmarks/*.md
 }

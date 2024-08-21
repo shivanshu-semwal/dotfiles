@@ -1,4 +1,5 @@
 #!/bin/bash
+# light and dark theme switcher
 
 # Check if an argument is provided
 if [ $# -ne 1 ]; then
@@ -13,40 +14,60 @@ theme=$1
 if [ "$theme" = "light" ]; then
   echo "Setting light theme..."
 
-  # gtk
-  gsettings set org.gnome.desktop.interface color-scheme 'default'
-  gsettings set org.gnome.desktop.interface icon-theme 'ePapirus'
-
-  gnome-extensions enable lightshell@dikasp.gitlab
-
-  # qt
-  cp "$HOME/.config/qt5ct/light.conf" "$HOME/.config/qt5ct/qt5ct.conf"
-
+  # generic across all de/wm
   # terminal
   alacritty-conf -c atom_one_light
 
-  # wallpaper using variety
-  variety --set-option icon Dark --set-option lightness_mode 1
-  variety --next
+  case "$DESKTOP_SESSION" in
+  gnome)
+    # gtk
+    gsettings set org.gnome.desktop.interface color-scheme 'default'
+    gsettings set org.gnome.desktop.interface icon-theme 'ePapirus'
+
+    # tray icons change contrast so they can be seen
+    dconf write /org/gnome/shell/extensions/appindicator/icon-contrast -1.0
+
+    gnome-extensions enable lightshell@dikasp.gitlab
+
+    # qt
+    cp "$HOME/.config/qt5ct/light.conf" "$HOME/.config/qt5ct/qt5ct.conf"
+
+    # wallpaper using variety
+    variety --set-option icon Dark --set-option lightness_mode 1
+    variety --next
+    ;;
+  i3)
+    echo "no theme setup"
+    ;;
+  esac
 
 elif [ "$theme" = "dark" ]; then
   echo "Setting dark theme..."
 
-  gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
-  gsettings set org.gnome.desktop.interface icon-theme 'ePapirus-Dark'
-
-  gnome-extensions disable lightshell@dikasp.gitlab
-
-  # qt
-  cp "$HOME/.config/qt5ct/dark.conf" "$HOME/.config/qt5ct/qt5ct.conf"
-
   # terminal
   alacritty-conf -c alacritty_0_12
 
-  # wallpaper using variety
-  variety --set-option icon Light --set-option lightness_mode 0
-  variety --next
+  case "$DESKTOP_SESSION" in
+  gnome)
+    gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
+    gsettings set org.gnome.desktop.interface icon-theme 'ePapirus-Dark'
 
+    # tray icons reset contrast back so they can be seen
+    dconf write /org/gnome/shell/extensions/appindicator/icon-contrast 0.0
+
+    gnome-extensions disable lightshell@dikasp.gitlab
+
+    # qt
+    cp "$HOME/.config/qt5ct/dark.conf" "$HOME/.config/qt5ct/qt5ct.conf"
+
+    # wallpaper using variety
+    variety --set-option icon Light --set-option lightness_mode 0
+    variety --next
+    ;;
+  i3)
+    echo "no theme set"
+    ;;
+  esac
 else
   echo "Invalid argument. Usage: $0 <light|dark>"
   exit 1
