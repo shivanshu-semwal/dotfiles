@@ -22,3 +22,6 @@ export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=lcd'
 
 # go
 export PATH=$PATH:/usr/local/go/bin
+
+# telemetry .dotnet
+export DOTNET_CLI_TELEMETRY_OPTOUT=1

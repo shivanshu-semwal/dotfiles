@@ -1,48 +1,92 @@
 {
-    //editor config
-    "editor.mouseWheelZoom": true,
-    "editor.fontFamily": "'IosevkaTerm Nerd Font', monospace",
-    "editor.renderWhitespace": "boundary",
-    "editor.semanticHighlighting.enabled": true,
-    "editor.cursorBlinking": "phase",
-    "editor.cursorSmoothCaretAnimation": "on",
-    "editor.suggestSelection": "first",
-    "editor.unicodeHighlight.nonBasicASCII": false,
-    "editor.guides.bracketPairs": true,
-    "editor.minimap.enabled": false,
-    // workbench
-    "workbench.startupEditor": "none",
-    "workbench.editor.languageDetection": false,
-    "workbench.statusBar.visible": true,
-    // windows config
-    "window.menuBarVisibility": "toggle",
-    "window.restoreWindows": "none",
-    "window.autoDetectColorScheme": true,
-    "window.zoomLevel": 1,
-    // keyboard
-    "keyboard.dispatch": "keyCode",
-    // zenmode
-    "zenMode.fullScreen": false,
-    "zenMode.centerLayout": true,
-    "zenMode.hideLineNumbers": false,
-    // terminal
-    "terminal.integrated.enableMultiLinePasteWarning": "auto",
-    "terminal.explorerKind": "external",
-    "terminal.external.linuxExec": "alacritty",
-    "terminal.integrated.fontSize": 16,
-    // update
-    "update.mode": "manual",
-    // git 
-    "git.autoRepositoryDetection": "subFolders",
-    "git.openRepositoryInParentFolders": "never",
-    // telemetry
-    "telemetry.telemetryLevel": "off",
-    // extensions
-    "extensions.ignoreRecommendations": true,
-    // jupyter notebook
-    "notebook.lineNumbers": "on",
-    // tab
-    "[markdown]": {
-        "editor.tabSize": 4
-    }
+  //editor config
+  "editor.mouseWheelZoom": true,
+  "editor.fontFamily": "'IosevkaTerm Nerd Font', monospace",
+  "editor.renderWhitespace": "boundary",
+  "editor.semanticHighlighting.enabled": true,
+  "editor.cursorBlinking": "phase",
+  "editor.cursorSmoothCaretAnimation": "on",
+  "editor.suggestSelection": "first",
+  "editor.unicodeHighlight.nonBasicASCII": false,
+  "editor.guides.bracketPairs": true,
+  "editor.minimap.enabled": false,
+  // workbench
+  "workbench.startupEditor": "none",
+  "workbench.editor.languageDetection": false,
+  "workbench.statusBar.visible": true,
+  "window.restoreWindows": "none",
+  "window.autoDetectColorScheme": true,
+  "window.zoomLevel": 1,
+  // keyboard
+  "keyboard.dispatch": "keyCode",
+  // zenmode
+  "zenMode.fullScreen": false,
+  "zenMode.centerLayout": true,
+  "zenMode.hideLineNumbers": false,
+  // terminal
+  "terminal.integrated.enableMultiLinePasteWarning": "auto",
+  "terminal.explorerKind": "external",
+  "terminal.external.linuxExec": "alacritty",
+  "terminal.integrated.fontSize": 16,
+  // update
+  "update.mode": "manual",
+  // git
+  "git.autoRepositoryDetection": "subFolders",
+  "git.openRepositoryInParentFolders": "never",
+  // telemetry
+  "telemetry.telemetryLevel": "off",
+  // extensions
+  "extensions.ignoreRecommendations": true,
+  // jupyter notebook
+  "notebook.lineNumbers": "on",
+  // tab
+  "[markdown]": {
+    "editor.tabSize": 4,
+    "editor.defaultFormatter": "DavidAnson.vscode-markdownlint"
+  },
+  "window.customTitleBarVisibility": "auto",
+  "rainbowTags.allowEverywhere": true,
+  "editor.tokenColorCustomizations": {
+    "textMateRules": [
+      {
+        "scope": "heading.1.markdown entity.name.section.markdown",
+        "settings": {
+          "foreground": "#4d85c3",
+        }
+      },
+      {
+        "scope": "heading.2.markdown entity.name.section.markdown",
+        "settings": {
+          "foreground": "#389674",
+        }
+      },
+      {
+        "scope": "heading.3.markdown entity.name.section.markdown",
+        "settings": {
+          "foreground": "#b0be1e",
+        }
+      },
+      {
+        "scope": "heading.4.markdown entity.name.section.markdown",
+        "settings": {
+          "foreground": "#8594c8",
+        }
+      },
+      {
+        "scope": "heading.5.markdown entity.name.section.markdown",
+        "settings": {
+          "foreground": "#f76328",
+        }
+      },
+      {
+        "scope": "heading.6.markdown entity.name.section.markdown",
+        "settings": {
+          "foreground": "#fccf3e",
+        }
+      },
+    ]
+  },
+  "security.promptForLocalFileProtocolHandling": false,
+  "workbench.preferredDarkColorTheme": "One Dark Pro Night Flat",
+  "workbench.iconTheme": "vscode-icons"
 }

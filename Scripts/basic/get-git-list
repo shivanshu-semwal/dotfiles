@@ -1,0 +1,19 @@
+#!/bin/bash
+
+# Set the root directory, default to current directory
+ROOT_DIR="${1:-.}"
+
+# Print table header
+printf "%-70s | %s\n" "Repository Path" "Origin URL"
+printf -- "----------------------------------------------------------------------|------------------------------\n"
+
+# Find all .git directories recursively
+find "$ROOT_DIR" -type d -name ".git" | while read -r git_dir; do
+    repo_dir=$(dirname "$git_dir")
+    origin_url=$(git -C "$repo_dir" remote get-url origin 2>/dev/null)
+    if [ -z "$origin_url" ]; then
+        origin_url="(no origin remote)"
+    fi
+    printf "%-70s | %s\n" "$repo_dir" "$origin_url"
+done
+

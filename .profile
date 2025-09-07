@@ -50,3 +50,12 @@ export QT_QPA_PLATFORMTHEME=qt5ct
 
 # swap esc and caps-lock
 setxkbmap -option "caps:swapescape"
+
+[ -f "/home/totoro/.ghcup/env" ] && . "/home/totoro/.ghcup/env" # ghcup-env
+
+
+case "$DESKTOP_SESSION" in
+    i3)
+        export $(gnome-keyring-daemon --start --components=secrets,ssh,pkcs1)
+        ;;
+esac

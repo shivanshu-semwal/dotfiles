@@ -17,17 +17,18 @@ if [ "$theme" = "light" ]; then
   # generic across all de/wm
   # terminal
   alacritty-conf -c atom_one_light
+  sed -i 's/^let g:my_theme = "dark"$/let g:my_theme = "light"/' "$HOME/.vim/vimrc"
 
   case "$DESKTOP_SESSION" in
   gnome)
     # gtk
     gsettings set org.gnome.desktop.interface color-scheme 'default'
-    gsettings set org.gnome.desktop.interface icon-theme 'ePapirus'
+    gsettings set org.gnome.desktop.interface icon-theme 'Papirus'
 
     # tray icons change contrast so they can be seen
     dconf write /org/gnome/shell/extensions/appindicator/icon-contrast -1.0
 
-    gnome-extensions enable lightshell@dikasp.gitlab
+    # gnome-extensions enable lightshell@dikasp.gitlab
 
     # qt
     cp "$HOME/.config/qt5ct/light.conf" "$HOME/.config/qt5ct/qt5ct.conf"
@@ -46,11 +47,12 @@ elif [ "$theme" = "dark" ]; then
 
   # terminal
   alacritty-conf -c alacritty_0_12
+  sed -i 's/^let g:my_theme = "light"$/let g:my_theme = "dark"/' "$HOME/.vim/vimrc"
 
   case "$DESKTOP_SESSION" in
   gnome)
     gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
-    gsettings set org.gnome.desktop.interface icon-theme 'ePapirus-Dark'
+    gsettings set org.gnome.desktop.interface icon-theme 'Papirus-Dark'
 
     # tray icons reset contrast back so they can be seen
     dconf write /org/gnome/shell/extensions/appindicator/icon-contrast 0.0

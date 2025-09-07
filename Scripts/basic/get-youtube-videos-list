@@ -1,0 +1,10 @@
+#!/bin/python3
+import scrapetube
+
+CHANNEL_ID = "UC9-y-6csu5WGm29I7JiwpnA"
+VIDEOS = scrapetube.get_channel(CHANNEL_ID, limit=10)
+
+for i in VIDEOS:
+    print("- [ ] [" + i["title"]["runs"][0]["text"] + "]" + "(https://www.youtube.com/watch?v=" + str(i["videoId"]) + ")") 
+
+

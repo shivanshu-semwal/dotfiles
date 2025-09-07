@@ -35,5 +35,8 @@
   "workbench.iconTheme": "material-icon-theme",
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "eslint.run": "onSave",
-  "workbench.colorTheme": "Default Light Modern",
+  "editor.formatOnSave": true,
+  "workbench.layoutControl.enabled": false,
+  "window.commandCenter": false,
+  "liveServer.settings.donotShowInfoMsg": true
 }

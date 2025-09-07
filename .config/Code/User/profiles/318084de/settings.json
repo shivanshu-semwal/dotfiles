@@ -45,5 +45,10 @@
     "[markdown]": {
         "editor.tabSize": 4
     },
-    "workbench.colorTheme": "Default Light Modern"
+    "workbench.colorTheme": "Default Light Modern",
+    "C_Cpp.clang_format_fallbackStyle": "Google",
+    "cmake.pinnedCommands": [
+        "workbench.action.tasks.configureTaskRunner",
+        "workbench.action.tasks.runTask"
+    ]
 }

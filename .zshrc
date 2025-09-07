@@ -186,6 +186,10 @@ fi
 autoload edit-command-line 
 zle -N edit-command-line
 bindkey '^e' edit-command-line
+# Check if running inside Dolphin's integrated terminal
+if [[ -n "$KONSOLE_DBUS_SESSION" || "$KONSOLE_PROFILE_NAME" == "Dolphin" ]]; then
+    bindkey -r '^E'  # Unset Ctrl + E in Dolphin
+fi
 
 # use updated zsh-autocompletion
 # if [ -f $HOME/.config/zsh/plugins/zsh-autocomplete/zsh-autocomplete.plugin.zsh ];then
@@ -217,7 +221,16 @@ bindkey -s '^o' '^ulfcd\n'
 # autojump
 [ -s "/usr/share/autojump/autojump.zsh" ] && source /usr/share/autojump/autojump.zsh
 
-## cargo
+## cargo for rust
 [ -s "$HOME/.cargo/env" ] && source "$HOME/.cargo/env"
 
+# rvenv for ruby
+eval "$(~/.rbenv/bin/rbenv init - zsh)"
+
 # zprof
+
+[ -f "/home/totoro/.ghcup/env" ] && . "/home/totoro/.ghcup/env" # ghcup-env
+
+
+# Load Angular CLI autocompletion.
+source <(ng completion script)
